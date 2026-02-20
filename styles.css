@@ -430,3 +430,224 @@ a {
 a:hover {
     color: var(--gold-accent);
 }
+
+/* Эффект «металлической поверхности» для таблиц */
+.schedule-table {
+    position: relative;
+}
+
+.schedule-table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 25%,
+        rgba(255,255,255,0.03) 25%,
+        rgba(255,255,255,0.03) 50%,
+        transparent 50%,
+        transparent 75%,
+        rgba(255,255,255,0.03) 75%,
+        rgba(255,255,255,0.03)
+    );
+    background-size: 50px 50px;
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+/* Стили для нумерации в списках (военный стиль) */
+.resources ol li::before {
+    content: counter(item) ".";
+    counter-increment: item;
+    display: inline-block;
+    width: 25px;
+    margin-right: 10px;
+    color: var(--gold-accent);
+    font-weight: bold;
+    text-align: right;
+}
+
+ol {
+    counter-reset: item;
+}
+
+/* Специальные военные элементы */
+.military-badge {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--red-alert);
+    color: white;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    margin: 0 0.5rem 0.5rem 0;
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 2px 0 rgba(165, 27, 27, 0.8);
+}
+
+.military-badge.green {
+    background: var(--military-green);
+    border-color: rgba(46, 125, 50, 0.8);
+    box-shadow: 0 2px 0 rgba(33, 87, 36, 0.8);
+}
+
+.military-badge.gold {
+    background: var(--gold-accent);
+    color: var(--primary-dark);
+    border-color: rgba(255, 215, 0, 0.8);
+    box-shadow: 0 2px 0 rgba(204, 171, 0, 0.8);
+}
+
+/* Эффект повреждённой бумаги для важных уведомлений */
+.important-note {
+    position: relative;
+}
+
+.important-note::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: 10px;
+    background: rgba(198, 40, 40, 0.2);
+    transform: rotate(-2deg);
+    z-index: -1;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Анимация мигающих предупреждений */
+.alert-blink {
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Стили для статус‑индикаторов */
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.status-indicator.online {
+    background: #4caf50;
+    box-shadow: 0 0 8px #4caf50;
+}
+
+.status-indicator.offline {
+    background: #f44336;
+    box-shadow: 0 0 8px #f44336;
+}
+
+.status-indicator.warning {
+    background: #ff9800;
+    box-shadow: 0 0 8px #ff9800;
+}
+
+/* Эффект приборной панели для таблиц */
+.schedule-table th {
+    position: relative;
+}
+
+.schedule-table th::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+}
+
+/* Стили для разделов с ресурсами */
+.resources-section {
+    margin-bottom: 2rem;
+}
+
+.resources-section h3 {
+    color: var(--steel-blue);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-left: 3px solid var(--military-green);
+    padding-left: 15px;
+}
+
+/* Эффекты при наведении для интерактивных элементов */
+.btn:hover,
+nav a:hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Стили для мобильных устройств — оптимизация */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .resources {
+        padding: 1.2rem;
+        margin: 1rem auto;
+    }
+
+    nav li {
+        margin-left: 0.8rem;
+    }
+
+    .schedule-table {
+        font-size: 0.9rem;
+    }
+
+    .important-note {
+        padding: 1rem;
+    }
+}
+
+/* Печатный эффект для текста */
+.typed-text {
+    font-family: 'Courier New', monospace;
+    color: var(--text-light);
+}
+
+/* Военные иконки (псевдоэлементы) */
+[data-icon]:before {
+    content: attr(data-icon);
+    margin-right: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1em;
+}
+
+/* Финальные глобальные настройки */
+*::selection {
+    background: var(--military-green);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(44, 62, 80, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--military-green);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--olive-green);
+}
