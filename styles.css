@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #3498db;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.resources ul, .content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.resources li, .content li {
+    margin-bottom: 0.8rem;
+    padding: 0.8rem 1rem;
+    background: #f9f9f9;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+}
+
+.resources a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.resources a:hover {
+    color: #16658a;
+    text-decoration: underline;
+}
+
+.schedule {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.revision-item {
+    background: #ecf0f1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.revision-item:hover {
+    transform: translateY(-5px);
+    background: #d5dbdb;
+}
+
+.revision-item h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.instructions {
+    background: #fff8e1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.warning {
+    background: #ffebee;
+    padding: 1rem;
+    border-left: 4px solid #f44336;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #c62828;
+}
+
+.rules ul, .content ul {
+    margin-left: 1.5rem;
+}
+
+.rules li, .content li {
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #34495e;
+    color: white;
+    margin-top: 2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    
+    .schedule {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
