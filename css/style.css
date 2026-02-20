@@ -1,0 +1,1806 @@
+/* Стили для контактов */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.contact-card {
+    background: rgba(44, 62, 80, 0.7);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #f39c12, #ffd700, #2ecc71);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(52, 73, 94, 0.9);
+}
+
+.contact-card i {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.contact-card p {
+    color: #ecf0f1;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.contact-card small {
+    color: #bdc3c7;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.social-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+    color: #2980b9;
+}
+
+/* Стили для карты */
+.map-section {
+    margin: 3rem 0;
+}
+
+.map-container {
+    background: rgba(39, 55, 77, 0.8);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.map-placeholder {
+    color: #bdc3c7;
+    text-align: center;
+}
+
+.map-placeholder i {
+    margin-bottom: 1rem;
+    color: #e74c3c;
+    font-size: 3rem;
+}
+
+.map-placeholder p {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* Стили для формы обратной связи */
+.feedback-section {
+    margin: 3rem 0;
+}
+
+.feedback-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.feedback-form input,
+.feedback-form select,
+.feedback-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(60, 75, 90, 0.6);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.feedback-form input:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+    background: rgba(70, 85, 100, 0.7);
+}
+
+.feedback-form button {
+    width: 100%;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #e74c3c;
+    color: white;
+    border: 2px solid #c0392b;
+}
+
+.btn-primary:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: rgba(52, 152, 219, 0.8);
+    color: white;
+    border: 2px solid rgba(41, 128, 185, 0.9);
+}
+
+.btn-secondary:hover {
+    background: rgba(41, 128, 185, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Оповещения */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.alert.warning {
+    background: rgba(243, 156, 18, 0.15);
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    color: #f39c12;
+}
+
+.alert.important {
+    background: rgba(155, 89, 182, 0.15);
+    border: 1px solid rgba(155, 89, 182, 0.3);
+    color: #9b59b6;
+}
+
+.alert.info {
+    background: rgba(52, 152, 219, 0.15);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    color: #3498db;
+}
+
+.alert i {
+    font-size: 1.2rem;
+}
+
+/* Подвал */
+footer {
+    background: rgba(26, 38, 50, 0.95);
+    padding: 2rem 0;
+    text-align: center;
+    color: #7f8c8d;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .contacts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: flex-start;
+    }
+    
+    .nav-links a {
+        width: 100%;
+        text-align: left;
+        padding: 0.75rem 1rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .feedback-form {
+        margin: 0;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .action-buttons .btn {
+        width: 100%;
+    }
+    
+    .rules-grid,
+    .schedule-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps-list {
+        padding-left: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-card {
+        padding: 1rem;
+    }
+    
+    .contact-card i {
+        font-size: 2rem;
+    }
+    
+    .contact-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .contact-card p {
+        font-size: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    .map-container {
+        padding: 1rem;
+    }
+    
+    .alert {
+        padding: 0.75rem 1rem;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .alert i {
+        font-size: 1rem;
+    }
+}
+
+/* Стили для главной страницы */
+.hero {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    z-index: -1;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* Стили навигации */
+.main-menu {
+    background: rgba(26, 38, 50, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #e74c3c;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo .emblem {
+    height: 50px;
+    width: auto;
+}
+
+.logo h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.menu-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.menu-link {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.menu-link:hover {
+    color: #ffd700;
+}
+
+.menu-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #e74c3c;
+    transition: width 0.3s;
+}
+
+.menu-link:hover::after {
+    width: 100%;
+}
+
+/* Подменю на внутренних страницах */
+.submenu {
+    background: rgba(26, 38, 50, 0.95);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.back-btn {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-btn:hover {
+    color: #2980b9;
+}
+
+/* Стили для расписания ревизий */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.schedule-card {
+    background: rgba(44, 62, 80, 0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.schedule-card.morning {
+    border-left: 4px solid #f39c12;
+}
+
+.schedule-card.afternoon {
+    border-left: 4px solid #3498db;
+}
+
+.schedule-card.evening {
+    border-left: 4px solid #9b59b6;
+}
+
+.schedule-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.time {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffd700;
+    margin-bottom: 0.5rem;
+}
+
+.rev-type {
+    font-size: 1.1rem;
+    color: #ecf0f1;
+    margin-bottom: 0.5rem;
+}
+
+.status {
+    color: #2ecc71;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Общие стили для карточек */
+.resource-card,
+.rule-card {
+    background: rgba(44, 62, 80, 0.7);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.resource-card:hover,
+.rule-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.resource-card i,
+.rule-card i {
+    font-size: 2.2rem;
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.resource-card h3,
+.rule-card h3 {
+    color: #fff;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.resource-card p,
+.rule-card p {
+    color: #ecf0f1;
+    font-weight: 500;
+}
+
+/* Стили для секций контента */
+.content-section {
+    padding: 3rem 0;
+    background: rgba(26, 38, 50, 0.9);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Стили для списков */
+.subjects-list,
+.steps-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.subjects-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.subjects-list i {
+    color: #3498db;
+    min-width: 24px;
+}
+
+.steps-list {
+    counter-reset: step-counter;
+}
+
+.steps-list li {
+    position: relative;
+    padding: 1rem 0 1rem 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.steps-list li::before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    position: absolute;
+    left: 0;
+    top: 0.75rem;
+    width: 40px;
+    height: 40px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Стили для кнопок действий */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: #e74c3c;
+    color: white;
+    border: 2px solid #c0392b;
+}
+
+.btn-primary:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(52, 152, 219, 0.8);
+    color: white;
+    border: 2px solid rgba(41, 128, 185, 0.9);
+}
+
+.btn-secondary:hover {
+    background: rgba(41, 128, 185, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для оповещений */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    line-height: 1.4;
+}
+
+.alert.warning {
+    background: rgba(243, 156, 18, 0.15);
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    color: #f39c12;
+}
+
+.alert.important {
+    background: rgba(155, 89, 182, 0.15);
+    border: 1px solid rgba(155, 89, 182, 0.3);
+    color: #9b59b6;
+}
+
+.alert.info {
+    background: rgba(52, 152, 219, 0.15);
+    border: 1px solid rgba(52, 152, 219, 0.3);
+    color: #3498db;
+}
+
+.alert i {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Стили для подвала */
+footer {
+    background: rgba(26, 38, 50, 0.95);
+    padding: 2rem 0;
+    text-align: center;
+    color: #7f8c8d;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+    margin-top: 3rem;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Общие типографические стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #ecf0f1;
+    background: linear-gradient(135deg, #1a2632 0%, #2c3e50 100%);
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+small {
+    font-size: 0.85rem;
+    color: #bdc3c7;
+}
+
+/* Сброс стилей для ссылок */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Базовые отступы и выравнивание */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Классы-помощники */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* Стили для иконок */
+i {
+    display: inline-block;
+}
+
+/* Скрытый элемент для доступности */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border:0;
+}
+
+/* Стили для кнопки «Наверх» */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #e74c3c;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #c0392b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Стили для состояния загрузки */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Стили для состояний формы */
+.feedback-form .form-group.error input,
+.feedback-form .form-group.error textarea {
+    border-color: #e74c3c;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.feedback-form .form-group.success input,
+.feedback-form .form-group.success textarea {
+    border-color: #2ecc71;
+}
+
+/* Стили для сообщений об успехе/ошибке */
+.form-message {
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.form-message.success {
+    background: rgba(46, 204, 113, 0.15);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    color: #27ae60;
+}
+
+.form-message.error {
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    color: #c0392b;
+}
+
+/* Стили для социальных иконок в подвале */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.social-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(52, 73, 94, 0.8);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+}
+
+.social-link-icon:hover {
+    background: #3498db;
+    transform: translateY(-3px);
+}
+
+/* Стили для футера с колонками */
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.footer-column h3 {
+    color: #ffd700;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-column li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+    color: #bdc3c7;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: #fff;
+}
+
+/* Дополнительные адаптивные стили */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Стили для тёмной темы (опционально) */
+.dark-theme {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --text-primary: #e6e6e6;
+    --border-color: rgba(255, 215, 0, 0.2);
+}
+
+.dark-theme body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark-theme .contact-card,
+.dark-theme .resource-card,
+.dark-theme .rule-card {
+    background: rgba(22, 33, 62, 0.8);
+    border-color: var(--border-color);
+}
+
+.dark-theme footer {
+    background: var(--bg-secondary);
+}
+
+/* Общие стили для плавных анимаций */
+* {
+    transition: background 0.3s, color 0.3s, transform 0.3s, border 0.3s;
+}
+
+/* Сброс стилей для печати */
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    
+    nav, .back-to-top, .action-buttons {
+        display: none;
+    }
+}
+/* Продолжение CSS‑стилей (css/style.css) */
+
+/* Стили для переключателя темы */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1001;
+    background: rgba(26, 38, 50, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    padding: 0.25rem;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.theme-toggle::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: #ffd700;
+    border-radius: 50%;
+    margin-left: 2px;
+    transition: transform 0.3s;
+}
+
+.theme-toggle.dark::before {
+    transform: translateX(30px);
+    background: #e74c3c;
+}
+
+/* Стили для модальных окон */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: rgba(44, 62, 80, 0.95);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #bdc3c7;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #fff;
+}
+
+/* Стили для прогресс‑бара */
+.progress-bar {
+    height: 6px;
+    background: rgba(52, 73, 94, 0.6);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+    width: 0%;
+    transition: width 0.3s;
+}
+
+/* Стили для карточек достижений */
+.achievement-card {
+    background: rgba(39, 55, 77, 0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: all 0.3s;
+    position: relative;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2ecc71, #3498db);
+}
+
+.achievement-card.unlocked {
+    border-color: #2ecc71;
+}
+
+.achievement-card.locked {
+    opacity: 0.6;
+    filter: grayscale(100%);
+}
+
+.achievement-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-title {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.achievement-description {
+    color: #bdc3c7;
+    font-size: 0.9rem;
+}
+
+/* Стили для таблицы */
+.table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+th {
+    color: #ffd700;
+    font-weight: 600;
+    background: rgba(52, 73, 94, 0.4);
+}
+
+tr:hover {
+    background: rgba(60, 85, 100, 0.3);
+}
+
+/* Стили для карусели изображений */
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    min-width: 100%;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: 1rem;
+}
+
+.carousel-btn.next {
+    right: 1rem;
+}
+
+/* Стили для уведомлений */
+.notification {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    color: white;
+    z-index: 3000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification.success {
+    background: #2ecc71;
+}
+
+.notification.error {
+    background: #e74c3c;
+}
+
+.notification.warning {
+    background: #f39c12;
+}
+
+/* Стили для выпадающего меню */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(44, 62, 80, 0.95);
+    min-width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1rem;
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+}
+
+.dropdown-item:hover {
+    background: rgba(52, 152, 219, 0.3);
+    color: #fff;
+}
+
+/* Стили для аккордеона */
+.accordion {
+    margin: 1.5rem 0;
+}
+
+.accordion-item {
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.accordion-header {
+    padding: 1rem 1.5rem;
+    background: rgba(44, 62, 80, 0.7);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+
+.accordion-header:hover {
+    background: rgba(52, 73, 94, 0.8);
+}
+
+.accordion-header.active {
+    background: rgba(52, 152, 219, 0.2);
+}
+
+.accordion-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+}
+
+.accordion-content.active {
+    padding: 1rem 1.5rem;
+    max-height: 500px;
+}
+
+/* Стили для счётчиков */
+.counter {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Стили для тегов */
+.tag {
+    display: inline-block;
+    background: rgba(52, 152, 219, 0.2);
+    color: #3498db;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin: 0.25rem;
+    border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+.tag.primary {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border-color: rgba(231, 76, 60, 0.3);
+}
+
+.tag.success {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border-color: rgba(46, 204, 113, 0.3);
+}
+
+/* Стили для индикаторов статуса */
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.status-online {
+    background: #2ecc71;
+}
+
+.status-offline {
+    background: #95a5a6;
+}
+
+.status-busy {
+    background: #f39c12;
+}
+
+/* Стили для карточек пользователей */
+.user-card {
+    background: rgba(44, 62, 80, 0.8);
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffd700;
+}
+
+.user-info h4 {
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.user-info p {
+    color: #bdc3c7;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Стили для пагинации */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.page-link {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(52, 73, 94, 0.6);
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.page-link:hover {
+    background: rgba(52, 152, 219, 0.3);
+    border-color: #3498db;
+}
+
+.page-link.active {
+    background: #3498db;
+    border-color: #2980b9;
+    color: white;
+}
+
+/* Стили для подсказок (tooltips) */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 150px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip .tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    .user-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pagination {
+        gap: 0.25rem;
+    }
+    
+    .page-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 50px;
+        height: 25px;
+    }
+    
+    .theme-toggle::before {
+        width: 20px;
+        height: 20px;
+        margin-left: 1px;
+    }
+    
+    .theme-toggle.dark::before {
+        transform: translateX(24px);
+    }
+    
+    .notification {
+        bottom: 0.5rem;
+        right: 0.5rem;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.5; }
+}
+
+/* Применение анимаций */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.slide-up {
+    animation: slideUp 0.4s ease-out;
+}
+
+.slide-down {
+    animation: slideDown 0.4s ease-in;
+}
+
+.pulse-effect {
+    animation: pulse 2s infinite;
+}
+
+.blink-effect {
+    animation: blink 1.5s infinite;
+}
+
+/* Стили для карточек с эффектами наведения */
+.card {
+    background: rgba(44, 62, 80, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: rgba(52, 73, 94, 0.9);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card h3 {
+    color: #fff;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.card p {
+    color: #bdc3c7;
+    line-height: 1.6;
+}
+
+/* Стили для формы обратной связи */
+.feedback-form {
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(52, 73, 94, 0.6);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 4px;
+    color: #ecf0f1;
+    font-family: inherit;
+    resize: vertical;
+    transition: border 0.3s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    background: rgba(52, 73, 94, 0.8);
+}
+
+.form-textarea {
+    min-height: 120px;
+}
+
+/* Стили для счётчика символов */
+.char-counter {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #95a5a6;
+    margin-top: 0.25rem;
+}
+
+/* Стили для индикатора загрузки */
+.loader {
+    border: 4px solid rgba(52, 73, 94, 0.8);
+    border-top: 4px solid #ffd700;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Стили для разделителей */
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+    margin: 2rem 0;
+}
+
+/* Стили для элементов навигации в виде шагов */
+.step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    counter-reset: step;
+}
+
+.step {
+    position: relative;
+    text-align: center;
+    flex: 1;
+}
+
+.step::before {
+    content: counter(step);
+    counter-increment: step;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(52, 73, 94, 0.6);
+    color: #bdc3c7;
+    line-height: 30px;
+    margin-bottom: 0.5rem;
+}
+
+.step.active::before {
+    background: #3498db;
+    color: white;
+}
+
+.step.completed::before {
+    background: #2ecc71;
+    color: white;
+}
+
+.step span {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+}
+
+.step.active span {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Адаптивные стили для очень маленьких экранов */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
+    
+    .feedback-form {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+    
+    .step-indicator {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .step {
+        text-align: left;
+    }
+    
+    .step::before {
+        position: absolute;
+        left: -40px;
+        top: 5px;
+    }
+}
+
+/* Финальные общие стили */
+*::selection {
+    background: #e74c3c;
+    color: white;
+}
+
+html {
+    scroll-padding-top: 80px; /* Учёт высоты фиксированного меню */
+}
+
+body {
+    overflow-x: hidden;
+}
