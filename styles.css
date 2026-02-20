@@ -1,13 +1,13 @@
 :root {
-    --primary-dark: #1a2530; /* Тёмно‑синий (фон) */
-    --steel-gray: #2c3e50; /* Стальной серый (блоки) */
-    --military-green: #2e7d32; /* Военный зелёный (акценты) */
-    --olive-green: #33691e; /* Оливковый (дополнительные акценты) */
-    --red-alert: #c62828; /* Красный сигнал (предупреждения) */
-    --gold-accent: #ffd700; /* Золотой (заголовки, рамки) */
-    --text-light: #f5f5f5; /* Светлый текст */
-    --text-gray: #bdbdbd; /* Серый текст */
-    --bg-dark-overlay: rgba(26, 37, 48, 0.85); /* Тёмный оверлей */
+    --primary-dark: #1a2530;
+    --steel-gray: #2c3e50;
+    --military-green: #2e7d32;
+    --olive-green: #33691e;
+    --red-alert: #c62828;
+    --gold-accent: #ffd700;
+    --text-light: #f5f5f5;
+    --text-gray: #bdbdbd;
+    --bg-dark-overlay: rgba(26, 37, 48, 0.85);
 }
 
 * {
@@ -53,6 +53,11 @@ h1, h2, h3, .logo {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.typed-text, .document-text {
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
 }
 
 /* Шапка сайта */
@@ -192,462 +197,84 @@ nav a.active::after {
     z-index: -1;
     border-radius: 9px;
 }
-
-.resources h2 {
-    color: var(--gold-accent);
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-    padding-bottom: 0.5rem;
-    font-size: 1.4rem;
-}
-
-/* Списки */
-.resources ul {
-    list-style: none;
-}
-
-.resources li {
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.3s ease;
-}
-
-.resources li:hover {
-    transform: translateX(10px);
-    background: rgba(46, 125, 50, 0.1);
-}
-
-/* Нумерованные списки */
-.resources ol {
-    list-style-position: inside;
-    margin-bottom: 2rem;
-}
-
-.resources ol li {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-/* Кнопки‑ссылки */
-.btn {
-    display: inline-block;
-    padding: 0.7rem 1.5rem;
-    background: var(--military-green);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    border: 1px solid var(--olive-green);
-    box-shadow: 0 3px 0 var(--olive-green);
-}
-
-.btn:hover {
-    background: var(--olive-green);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 0 var(--military-green);
-}
-
-.btn:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 0 var(--olive-green);
-}
-
-/* Важные заметки */
-.important-note {
-    background: rgba(198, 40, 40, 0.15);
-    border-left: 4px solid var(--red-alert);
-    padding: 1.2rem;
-    margin-bottom: 2rem;
-    border-radius: 0 4px 4px 0;
-    border: 1px solid rgba(198, 40, 40, 0.3);
-}
-
-.important-note h2 {
-    color: var(--red-alert);
-    margin-top: 0;
-    font-size: 1.3rem;
-}
-
-.important-note ul {
-    margin-top: 1rem;
-}
-
-.important-note li {
-    padding: 0.5rem 0;
-    border-bottom: none;
-}
-
-/* Таблицы */
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    background: rgba(44, 62, 80, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.schedule-table thead {
-    background: linear-gradient(to right, var(--military-green), var(--olive-green));
-}
-
-.schedule-table th,
-.schedule-table td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.schedule-table th {
-    color: white;
-    font-weight: 600;
-}
-
-.schedule-table tbody tr:nth-child(even) {
-    background: rgba(26, 37, 48, 0.4);
-}
-
-.schedule-table tbody tr:hover {
-    background: rgba(46, 125, 50, 0.2);
-    transition: background 0.3s ease;
-}
-
-/* Заголовки страниц */
-.page-header {
-    text-align: center;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 2rem;
-}
-
-.page-header h1 {
-    font-size: 2.5rem;
-    color: var(--gold-accent);
-    text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-}
-
-/* Футер */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: var(--bg-dark-overlay);
-    border-top: 2px solid var(--gold-accent);
-    margin-top: 3rem;
-}
-
-footer p {
-    color: var(--text-gray);
-    font-size: 0.9rem;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    nav ul {
-        gap: 0.5rem;
-    }
-
-    nav li {
-        margin-left: 1rem;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .resources {
-        padding: 1.5rem;
-        margin: 1.5rem auto;
-    }
-
-    .schedule-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 1.4rem;
-    }
-
-    nav {
-        font-size: 0.8rem;
-    }
-
-    .hero {
-        padding: 2rem 1rem;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-}
-
-/* Специальные эффекты для военной тематики */
-.military-stamp {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.8rem;
-    color: rgba(255, 215, 0, 0.5);
-    transform: rotate(15deg);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-/* Эффект штампа на важных элементах */
-.important-note::before {
-    content: "ВАЖНОЕ";
-    position: absolute;
-    top: -10px;
-    left: 20px;
-    background: var(--red-alert);
-    color: white;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.7rem;
-    transform: rotate(-5deg);
-    border-radius: 3px;
-    z-index: 1;
-}
-
-/* Стили для ссылок в тексте */
-a {
-    color: var(--steel-blue);
-    text-decoration: underline;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--gold-accent);
-}
-
-/* Эффект «металлической поверхности» для таблиц */
-.schedule-table {
-    position: relative;
-}
-
-.schedule-table::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        45deg,
-        transparent 25%,
-        rgba(255,255,255,0.03) 25%,
-        rgba(255,255,255,0.03) 50%,
-        transparent 50%,
-        transparent 75%,
-        rgba(255,255,255,0.03) 75%,
-        rgba(255,255,255,0.03)
-    );
-    background-size: 50px 50px;
-    pointer-events: none;
-    border-radius: 4px;
-}
-
-/* Стили для нумерации в списках (военный стиль) */
-.resources ol li::before {
-    content: counter(item) ".";
-    counter-increment: item;
-    display: inline-block;
-    width: 25px;
-    margin-right: 10px;
-    color: var(--gold-accent);
-    font-weight: bold;
-    text-align: right;
-}
-
-ol {
-    counter-reset: item;
-}
-
-/* Специальные военные элементы */
-.military-badge {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    background: var(--red-alert);
-    color: white;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 3px;
-    margin: 0 0.5rem 0.5rem 0;
-    border: 1px solid rgba(0,0,0,0.2);
-    box-shadow: 0 2px 0 rgba(165, 27, 27, 0.8);
-}
-
-.military-badge.green {
-    background: var(--military-green);
-    border-color: rgba(46, 125, 50, 0.8);
-    box-shadow: 0 2px 0 rgba(33, 87, 36, 0.8);
-}
-
-.military-badge.gold {
-    background: var(--gold-accent);
-    color: var(--primary-dark);
-    border-color: rgba(255, 215, 0, 0.8);
-    box-shadow: 0 2px 0 rgba(204, 171, 0, 0.8);
-}
-
-/* Эффект повреждённой бумаги для важных уведомлений */
-.important-note {
-    position: relative;
-}
-
-.important-note::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: -5px;
-    width: calc(100% + 10px);
-    height: 10px;
-    background: rgba(198, 40, 40, 0.2);
-    transform: rotate(-2deg);
-    z-index: -1;
-    border-radius: 0 0 4px 4px;
-}
-
-/* Анимация мигающих предупреждений */
-.alert-blink {
-    animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0.6; }
-    100% { opacity: 1; }
-}
-
-/* Стили для статус‑индикаторов */
-.status-indicator {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-.status-indicator.online {
-    background: #4caf50;
-    box-shadow: 0 0 8px #4caf50;
-}
-
-.status-indicator.offline {
-    background: #f44336;
-    box-shadow: 0 0 8px #f44336;
-}
-
-.status-indicator.warning {
-    background: #ff9800;
-    box-shadow: 0 0 8px #ff9800;
-}
-
-/* Эффект приборной панели для таблиц */
-.schedule-table th {
-    position: relative;
-}
-
-.schedule-table th::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
-}
-
-/* Стили для разделов с ресурсами */
-.resources-section {
-    margin-bottom: 2rem;
-}
-
-.resources-section h3 {
-    color: var(--steel-blue);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    border-left: 3px solid var(--military-green);
-    padding-left: 15px;
-}
-
-/* Эффекты при наведении для интерактивных элементов */
-.btn:hover,
-nav a:hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Стили для мобильных устройств — оптимизация */
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.8rem;
-        text-align: center;
-    }
-
-    .resources {
-        padding: 1.2rem;
-        margin: 1rem auto;
-    }
-
-    nav li {
-        margin-left: 0.8rem;
-    }
-
-    .schedule-table {
-        font-size: 0.9rem;
-    }
-
-    .important-note {
-        padding: 1rem;
-    }
-}
-
-/* Печатный эффект для текста */
-.typed-text {
-    font-family: 'Courier New', monospace;
-    color: var(--text-light);
-}
-
-/* Военные иконки (псевдоэлементы) */
-[data-icon]:before {
-    content: attr(data-icon);
-    margin-right: 8px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.1em;
-}
-
-/* Финальные глобальные настройки */
-*::selection {
-    background: var(--military-green);
-    color: white;
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(44, 62, 80, 0.5);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--military-green);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--olive-green);
-}
+<!-- Важные правила с эмодзи -->
+<div class="important-note emoji-section warning">
+    <h2>⚠️ ОСНОВНЫЕ ПРАВИЛА ⚠️</h2>
+    <ul class="emoji-list">
+        <li data-emoji="🕒">Срок на сдачу первичной аттестации: 5 дней</li>
+        <li data-emoji="⏱️">Срок на пересдачу: 2 дня после провала</li>
+        <li data-emoji="❌">Допустимое количество ошибок: не более 5</li>
+        <li data-emoji="🚫">Вторая пересдача не предусмотрена</li>
+        <li data-emoji="⚠️">При провале второй попытки — перевод в РМТО/ДШР</li>
+    </ul>
+</div>
+
+<!-- Программа аттестации с эмодзи -->
+<h2>📝 ТЕМЫ АТТЕСТАЦИИ 📝</h2>
+<ol class="emoji-list">
+    <li data-emoji="📖">Внутренний устав ВЧ</li>
+    <li data-emoji="📖">Устав ВП</li>
+    <li data-emoji="📜">ФЗ «О территориях с ограниченным доступом»</li>
+    <li data-emoji="🔫">ФЗ «Об оружии»</li>
+    <li data-emoji="👮">ФЗ «О статусе военнослужащих и военной службе»</li>
+    <li data-emoji="⚖️">Уголовный кодекс</li>
+    <li data-emoji="📋">Федеральное постановление</li>
+    <li data-emoji="🚔">Правила и процесс задержания</li>
+    <li data-emoji="📋">Проверка на знание приказов Генерала</li>
+    <li data-emoji="🗺️">РСГУ</li>
+</ol>
+
+<!-- Таблица этапов с эмодзи в заголовках -->
+<h2>🗓️ ЭТАПЫ ПРОХОЖДЕНИЯ 🗓️</h2>
+<table class="schedule-table">
+    <thead>
+        <tr>
+            <th>Этап 🛡️</th>
+            <th>Срок выполнения ⏱️</th>
+            <th>Условия ⚠️</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Первичная аттестация ✅</td>
+            <td>5 дней 🕒</td>
+            <td>Не более 5 ошибок ❌</td>
+        </tr>
+        <tr>
+            <td>Первая пересдача 🔄</td>
+            <td>2 дня после провала ⏱️</td>
+            <td>Те же условия 📝</td>
+        </tr>
+        <tr>
+            <td>Вторая пересдача 🚫</td>
+            <td>Не предусмотрена ❌</td>
+            <td>Перевод в РМТО/ДШР ⚠️</td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Дополнительные уведомления с эмодзи -->
+<div class="emoji-section info">
+    <h3>📢 ВАЖНАЯ ИНФОРМАЦИЯ 📢</h3>
+    <p>🔔 Все аттестации проводятся в присутствии офицера контроля.</p>
+    <p>📝 Результаты фиксируются в личном деле военнослужащего.</p>
+    <p>🗂️ По завершении успешной аттестации выдаётся удостоверение.</p>
+</div>
+
+<!-- Документ с печатной машинкой -->
+<div class="document-text">
+<pre>
+ПРИКАЗ № 045/ВП
+от 15.03.2024
+
+🎖️ Тема: Аттестация личного состава
+
+Настоящим приказываю:
+• Все военнослужащие обязаны пройти аттестацию в установленные сроки 🕒
+• Результаты должны быть предоставлены в штаб до 25.03.2024 🗓️
+• Лица, не прошедшие аттестацию, будут отстранены от выполнения обязанностей 🚫
+
+<span class="highlight">Подпись:</span> _________________
+<span class="highlight">Дата:</span> 15.03.2024
+</pre>
+</div>
