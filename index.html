@@ -1,45 +1,73 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&family=Courier+New:wght@400&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Военная полиция — Воинская часть</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Анимированный фон -->
+    <div class="animated-bg"></div>
+
+    <!-- Шапка с логотипом -->
     <header>
-        <div class="logo">AMAZING FIRE</div>
+        <div class="logo-container">
+            <h1 class="logo">AMAZING FIRE</h1>
+            <p class="year">2026</p>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Главная</a></li>
-                <li><a href="pages/revisions.html">Ревизии</a></li>
-                <li><a href="pages/certifications.html">Аттестации</a></li>
+                <li><a href="pages/resources.html">Ресурсы ВП</a></li>
+                <li><a href="pages/attestation.html">Аттестация</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <!-- Герой‑секция -->
         <section class="hero">
-            <h1>Добро пожаловать на сайт Военной полиции фракции Воинская часть</h1>
-            <p>Ниже представлена информация для успешного прохождения службы в рядах Военной полиции</p>
+            <h2>Добро пожаловать на сайт Военной полиции фракции Воинская часть</h2>
+            <p class="subtitle">ℹ Ниже представлена информация для успешного прохождения службы в рядах Военной полиции</p>
         </section>
 
-        <section class="resources">
-            <h2>Ссылки на ресурсы ВП</h2>
-            <ul>
-                <li><a href="https://vk.cc/cwLwgZ">Сайт военной полиции</a></li>
-                <li><a href="https://docs.google.com/spreadsheets/d/1x7lXNSiqmXTKyT4FYOqlkpukbTldg0oUYMVe3t-hL5Y/edit?gid=0#gid=0">Таблица военной полиции</a></li>
-                <li><a href="https://vk.cc/cSJmXK">Таблица «Ревизии и поставки»</a></li>
-                <li><a href="https://vk.cc/cSJmRL">Форма для отправки ревизий</a></li>
-                <li><a href="https://vk.cc/cSJ2HP">Дискорд сервер «Войсковая часть № 20115»</a></li>
-            </ul>
-        </section>
-    </main>
+        <!-- Краткое руководство -->
+        <section class="info-section">
+            <h3>🎯 Важная информация по работе ВП</h3>
 
-    <footer>
-        <p>&copy; 2026 Военная полиция фракции Воинская часть. Все права защищены.</p>
-    </footer>
+            <div class="revisions-schedule">
+                <h4>🕒 Проведение ревизий:</h4>
+                <ul class="emoji-list">
+                    <li data-emoji="➛">Утренняя ревизия — 10:00–12:00</li>
+                    <li data-emoji="➛">Обеденная ревизия — 14:00–16:00</li>
+            <li data-emoji="➛">Вечерняя ревизия — 20:00–22:00</li>
+        </ul>
+
+        <p class="warning">
+            🔔 После проведения ревизии её нужно отправить в единую базу данных ревизий через форму
+            (см. раздел «Ресурсы ВП» → п. 4)
+        </p>
+
+        <p class="important">
+            ⚠ Заранее сообщайте о проведении ревизии на сайте, чтобы избежать конфликтов и повторных проведений ревизии
+        </p>
+    </div>
+</section>
+
+<!-- Призыв к действию -->
+<section class="cta-section">
+    <h3>🚀 Готов начать службу?</h3>
+    <p>Ознакомьтесь с ресурсами и правилами прохождения аттестации</p>
+    <a href="pages/resources.html" class="btn">Перейти к ресурсам</a>
+    <a href="pages/attestation.html" class="btn">Изучить аттестацию</a>
+</section>
+</main>
+
+<footer>
+    <p>© 2026 Военная полиция фракции Воинская часть. Все права защищены.</p>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
