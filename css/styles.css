@@ -362,3 +362,1830 @@ footer p {
         padding: 2rem 1rem;
     }
 }
+/* Продолжение анимации частиц фона */
+.particle {
+    position: absolute;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Плавные переходы и анимации появления */
+* {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity, box-shadow;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+
+/* Стили для эмодзи в списках */
+.emoji-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.emoji-list li {
+    margin-bottom: 0.8rem;
+    padding-left: 2.5rem;
+    position: relative;
+}
+
+.emoji-list li::before {
+    content: attr(data-emoji);
+    position: absolute;
+    left: 0;
+}
+
+/* Анимация загрузки страницы */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255,215,0,0.3);
+    border-top-color: var(--gold-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Специальные стили для важных уведомлений */
+.important-note {
+    background: rgba(198, 40, 40, 0.15);
+    border-left: 4px solid var(--red-alert);
+    padding: 1.2rem;
+    margin: 2rem auto;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid rgba(198, 40, 40, 0.3);
+    position: relative;
+    animation: pulse-glow 4s infinite;
+    max-width: 900px;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(198, 40, 40, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(198, 40, 40, 0.2); }
+}
+
+/* Стили таблицы расписания */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: rgba(44, 62, 80, 0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    animation: tableLoad 0.8s ease-out;
+}
+
+@keyframes tableLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.schedule-table thead {
+    background: linear-gradient(to right, var(--military-green), var(--olive-green));
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.schedule-table th {
+    color: white;
+    font-weight: 600;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background: rgba(26, 37, 48, 0.4);
+}
+
+.schedule-table tbody tr:hover {
+    background: rgba(46, 125, 50, 0.2);
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+}
+
+/* Стили документа с печатной машинкой */
+.document-text {
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--gold-accent);
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 8px;
+    border: 2px solid var(--military-green);
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+.highlight {
+    color: var(--gold-accent);
+    font-weight: bold;
+}
+
+/* Стили для секций с информацией */
+.info-section {
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin: 1rem 0 2rem;
+    text-align: center;
+}
+
+/* Дополнительные анимации для карточек */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.scroll-reveal.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    nav li {
+        margin-left: 1rem;
+    }
+
+    .info-section,
+    .attestation-rules,
+    .exam-topics,
+    .preparation-tips,
+    .cta-section {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    .tips-container {
+        grid-template-columns: 1fr;
+    }
+
+    .numbered-list li::before {
+        display: none; /* Убираем нумерацию на мобильных */
+    }
+
+    .btn {
+        display: block;
+        margin: 0.5rem auto;
+        width: 80%;
+    }
+
+    /* Убираем тяжёлые анимации */
+    .particle {
+        display: none;
+    }
+
+    .emoji-list li::before {
+        content: none; /* Убираем эмодзи на мобильных */
+
+    /* Улучшенный анимированный фон */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background:
+        /* Тёмный градиент с военной тематикой */
+        linear-gradient(135deg, var(--primary-dark) 0%, #0a1218 50%, var(--steel-gray) 100%),
+        /* Текстура камуфляжа */
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a2530"/><path d="M0,0 L100,0 L50,100 Z" fill="%232c3e50" opacity="0.05"/></svg>'),
+        /* Мерцающие звёзды */
+        radial-gradient(circle at 20% 80%, rgba(46, 125, 50, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+    background-size: cover, auto, 200px 200px, 300px 300px;
+    animation: bgAnimation 20s ease-in-out infinite;
+}
+
+@keyframes bgAnimation {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Анимация мерцающих частиц */
+.particle {
+    position: absolute;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    animation: particleFloat 25s infinite linear, particleGlow 3s infinite alternate;
+    filter: blur(1px);
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(-50px);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+@keyframes particleGlow {
+    from { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    to { box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
+}
+
+/* Эффект сканирования (как у радара) */
+.scan-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(46, 125, 50, 0.15) 0%,
+            transparent 70%
+        );
+    transform: rotate(0deg);
+    animation: scan 8s linear infinite;
+    z-index: -1;
+}
+
+@keyframes scan {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Стили для заголовка с эффектом свечения */
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--gold-accent);
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.2),
+        0 0 30px rgba(255, 215, 0, 0.1);
+    animation:
+        pulse 3s infinite alternate,
+        colorShift 15s infinite;
+    position: relative;
+}
+
+@keyframes colorShift {
+    0% { color: var(--gold-accent); }
+    33% { color: #4CAF50; }
+    66% { color: #2196F3; }
+    100% { color: var(--gold-accent); }
+}
+
+/* Эффект печатной машинки для документа */
+.typewriter pre {
+    overflow: hidden;
+    border-right: 2px solid var(--gold-accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--gold-accent); }
+}
+
+/* Анимация появления карточек */
+.card {
+    background: rgba(44, 62, 80, 0.7);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 1rem 0;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: cardAppear 0.6s ease-out forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cardAppear {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Эффект подсветки при наведении на кнопки */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--military-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    border: 1px solid var(--olive-green);
+    box-shadow: 0 3px 0 var(--olive-green);
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 var(--military-green);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+/* Анимация для важных уведомлений */
+.important-note {
+    background: rgba(198, 40, 40, 0.15);
+    border-left: 4px solid var(--red-alert);
+    padding: 1.2rem;
+    margin: 2rem auto;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid rgba(198, 40, 40, 0.3);
+    position: relative;
+    animation: pulse-glow 4s infinite, shake 10s ease-in-out infinite;
+    max-width: 900px;
+}
+
+/* Продолжение анимации для важных уведомлений */
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(198, 40, 40, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(198, 40, 40, 0.2); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Улучшенный анимированный фон с многослойной структурой */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background:
+        /* Тёмный градиент с военной тематикой */
+        linear-gradient(135deg, var(--primary-dark) 0%, #0a1218 50%, var(--steel-gray) 100%),
+        /* Текстура камуфляжа */
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a2530"/><path d="M0,0 L100,0 L50,100 Z" fill="%232c3e50" opacity="0.05"/></svg>'),
+        /* Мерцающие звёзды */
+        radial-gradient(circle at 20% 80%, rgba(46, 125, 50, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+    background-size: cover, auto, 200px 200px, 300px 300px;
+    animation: bgAnimation 20s ease-in-out infinite;
+}
+
+@keyframes bgAnimation {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.02); opacity: 1; }
+}
+
+/* Анимация мерцающих частиц */
+.particle {
+    position: absolute;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    animation: particleFloat 25s infinite linear, particleGlow 3s infinite alternate;
+    filter: blur(1px);
+    z-index: -1;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(-50px);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+@keyframes particleGlow {
+    from { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    to { box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
+}
+
+/* Эффект сканирования (как у радара) */
+.scan-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(46, 125, 50, 0.15) 0%,
+            transparent 70%
+        );
+    transform: rotate(0deg);
+    animation: scan 8s linear infinite;
+    z-index: -1;
+    mix-blend-mode: overlay;
+}
+
+@keyframes scan {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Стили для заголовка с эффектом свечения */
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--gold-accent);
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.2),
+        0 0 30px rgba(255, 215, 0, 0.1);
+    animation:
+        pulse 3s infinite alternate,
+        colorShift 15s infinite;
+    position: relative;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold-accent), transparent);
+    animation: glowLine 2s infinite alternate;
+}
+
+@keyframes colorShift {
+    0% { color: var(--gold-accent); }
+    33% { color: #4CAF50; }
+    66% { color: #2196F3; }
+    100% { color: var(--gold-accent); }
+}
+
+@keyframes glowLine {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Эффект печатной машинки для документа */
+.typewriter pre {
+    overflow: hidden;
+    border-right: 2px solid var(--gold-accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--gold-accent); }
+}
+
+/* Анимация появления карточек */
+.card {
+    background: rgba(44, 62, 80, 0.7);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin: 1rem 0;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: cardAppear 0.6s ease-out forwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cardAppear {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Эффект подсветки при наведении на кнопки */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--military-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    border: 1px solid var(--olive-green);
+    box-shadow: 0 3px 0 var(--olive-green);
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Продолжение эффекта подсветки кнопок */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 var(--military-green);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+/* Эффект цифрового дождя (как в «Матрице») */
+.digital-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.rain-char {
+    position: absolute;
+    color: rgba(46, 125, 50, 0.7);
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    animation: fall 15s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Анимация для секций с информацией */
+.info-section,
+.attestation-rules,
+.exam-topics,
+.preparation-tips {
+    position: relative;
+    overflow: hidden;
+}
+
+.info-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--gold-accent), var(--military-green));
+    animation: glowLine 3s infinite alternate;
+}
+
+@keyframes glowLine {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Эффект свечения для важных заголовков */
+.highlight-title {
+    color: var(--gold-accent);
+    text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.2);
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold-accent);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Анимация появления элементов при скролле */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для таблицы расписания с анимацией */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: rgba(44, 62, 80, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    animation: tableLoad 0.8s ease-out;
+}
+
+@keyframes tableLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.schedule-table tbody tr:hover {
+    background: rgba(46, 125, 50, 0.2);
+    transform: scale(1.01);
+    z-index: 1;
+    position: relative;
+}
+
+/* Эффект голографического интерфейса */
+.holographic {
+    position: relative;
+    background: rgba(44, 62, 80, 0.4);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    box-shadow:
+        0 0 20px rgba(46, 125, 50, 0.2),
+        inset 0 0 20px rgba(255, 215, 0, 0.1);
+    animation: holoGlow 4s infinite alternate;
+    overflow: hidden;
+}
+
+.holographic::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 215, 0, 0.1),
+            transparent
+        );
+    transform: rotate(45deg);
+    animation: scanLine 3s linear infinite;
+    z-index: -1;
+}
+
+@keyframes holoGlow {
+    0% { box-shadow: 0 0 20px rgba(46, 125, 50, 0.2); }
+    50% { box-shadow: 0 0 30px rgba(46, 125, 50, 0.3); }
+    100% { box-shadow: 0 0 25px rgba(46, 125, 50, 0.25); }
+}
+
+@keyframes scanLine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+/* Адаптивные стили с анимациями */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    nav li {
+        margin-left: 1rem;
+    }
+
+    .info-section,
+    .attestation-rules,
+    .exam-topics,
+    .preparation-tips,
+    .cta-section {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    /* Отключаем тяжёлые анимации на мобильных */
+    .particle,
+    .scan-effect,
+    .digital-rain {
+        display: none;
+    }
+
+    .holographic::before {
+        animation: none;
+        background: none;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 1rem;
+    }
+
+    nav ul {
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+  /* Продолжение для кнопок на мобильных устройствах */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--military-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    border: 1px solid var(--olive-green);
+    box-shadow: 0 3px 0 var(--olive-green);
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Анимация пульсации для призывов к действию */
+.cta-pulse {
+    animation: pulseScale 2s infinite;
+    position: relative;
+}
+
+@keyframes pulseScale {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.cta-pulse::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--gold-accent);
+    border-radius: 6px;
+    opacity: 0;
+    animation: pulseGlowEffect 2s infinite;
+}
+
+@keyframes pulseGlowEffect {
+    0%, 100% { opacity: 0; box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+}
+
+/* Эффект параллакса для фона */
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a2530"/><path d="M0,0 L100,0 L50,100 Z" fill="%232c3e50" opacity="0.03"/></svg>');
+    background-size: cover;
+    transform: translateY(0);
+}
+
+/* Анимация для иконок */
+.icon-animate {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-animate:hover {
+    transform: scale(1.2) rotate(10deg);
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+}
+
+/* Эффект волн на фоне */
+.wave-bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: radial-gradient(circle at 50% 50%, rgba(46, 125, 50, 0.1) 0%, transparent 70%);
+    animation: waveMove 15s linear infinite;
+}
+
+.wave:nth-child(2) {
+    animation-delay: -5s;
+    opacity: 0.6;
+}
+
+.wave:nth-child(3) {
+    animation-delay: -10s;
+    opacity: 0.3;
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Анимация загрузки */
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 215, 0, 0.3);
+    border-top: 5px solid var(--gold-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Эффект свечения для текстовых элементов */
+.text-glow {
+    color: var(--gold-accent);
+    text-shadow:
+        0 0 5px rgba(255, 215, 0, 0.5),
+        0 0 10px rgba(255, 215, 0, 0.3),
+        0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+/* Анимация появления карточек с задержкой */
+.card-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Плавное появление элементов при скролле */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для футера с анимацией */
+footer {
+    background: rgba(17, 24, 39, 0.9);
+    padding: 2rem 0;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+    animation: footerGlow 3s infinite alternate;
+}
+
+@keyframes footerGlow {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Адаптивные стили для очень маленьких экранов */
+@media (max-width: 320px) {
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* Отключаем тяжёлые анимации на очень маленьких экранах */
+    .digital-rain,
+    .scan-effect,
+    .wave-bg,
+    .parallax-bg {
+        display: none;
+    }
+}
+
+/* Поддержка prefers-reduced-motion для доступности */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .particle,
+    .scan-effect,
+    .digital-rain {
+        /* Завершение стилей для очень маленьких экранов — скрываем тяжёлые анимации */
+    .particle,
+    .scan-effect,
+    .digital-rain,
+    .wave-bg,
+    .parallax-bg {
+        display: none !important;
+    }
+}
+
+/* Переменные для цветовой схемы (если ещё не заданы) */
+:root {
+    --primary-dark: #0a1218;
+    --steel-gray: #2c3e50;
+    --military-green: #3e5a44;
+    --olive-green: #4a6b3c;
+    --gold-accent: #ffd700;
+}
+
+/* Анимация для предупреждающих сообщений */
+.warning-flash {
+    animation: warningBlink 1.5s infinite;
+}
+
+@keyframes warningBlink {
+    0%, 100% { background-color: rgba(198, 40, 40, 0.2); }
+    50% { background-color: rgba(198, 40, 40, 0.4); }
+}
+
+/* Эффект «подсвечивания» для активных элементов навигации */
+nav a.active {
+    color: var(--gold-accent);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    position: relative;
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold-accent);
+    animation: underlineGlow 2s infinite;
+}
+
+@keyframes underlineGlow {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Анимация появления всплывающих подсказок */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    animation: tooltipAppear 0.3s ease-out;
+}
+
+@keyframes tooltipAppear {
+    from {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Эффект плавного появления контента при загрузке страницы */
+.page-load-animation {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+body.loaded .page-load-animation {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимация для счётчиков статистики */
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--gold-accent);
+    display: inline-block;
+}
+
+.stat-number::before {
+    content: attr(data-count);
+    animation: countUp 3s forwards;
+}
+
+@keyframes countUp {
+    from { counter-reset: num 0; }
+    to { counter-reset: num attr(data-count); }
+}
+
+/* Примечание: для анимации счётчиков потребуется JavaScript для корректного отображения чисел */
+
+/* Стили для модальных окон с анимацией */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+    animation: modalFadeIn 0.5s ease-out;
+}
+
+.modal-content {
+    background: rgba(44, 62, 80, 0.9);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: modalScaleIn 0.5s forwards ease-out;
+    position: relative;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalScaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Кнопка закрытия модального окна с анимацией */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.close-modal:hover {
+    transform: rotate(90deg);
+}
+
+/* Анимация для прогресс‑бара */
+.progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--military-green), var(--olive-green));
+    width: 0%;
+    animation: fillProgress 2s forwards;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: progressShine 2s linear infinite;
+}
+
+@keyframes fillProgress {
+    to { width: var(--progress-width); }
+}
+
+@keyframes progressShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Финальные стили для футера с дополнительной анимацией */
+footer .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+footer .social-links a {
+    display: inline-block;
+    margin: 0 0.5rem;
+    color: #ddd;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: var(--gold-accent);
+    transform: translateY(-3px);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Общие стили для всех анимированных элементов */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #121212;
+}
+
+/* Класс для отключения анимаций при необходимости */
+.no-animation * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+    /* Эффект неонового свечения для заголовков */
+.neon-title {
+    color: var(--gold-accent);
+    text-shadow:
+        0 0 5px var(--gold-accent),
+        0 0 10px var(--gold-accent),
+        0 0 20px var(--gold-accent),
+        0 0 40px var(--military-green),
+        0 0 80px var(--military-green);
+    animation: neonFlicker 1.5s infinite alternate;
+}
+
+@keyframes neonFlicker {
+    from {
+        text-shadow:
+            0 0 5px var(--gold-accent),
+            0 0 10px var(--gold-accent),
+            0 0 20px var(--gold-accent),
+            0 0 40px var(--military-green);
+    }
+    to {
+        text-shadow:
+            0 0 10px var(--gold-accent),
+            0 0 20px var(--gold-accent),
+            0 0 30px var(--gold-accent),
+            0 0 60px var(--military-green),
+            0 0 100px var(--military-green);
+    }
+}
+
+/* Анимация для карточек с эффектом «подпрыгивания» при наведении */
+.card-hover {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-hover:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.3),
+        0 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Эффект «размытия» фона при наведении на элементы */
+.blur-hover {
+    transition: backdrop-filter 0.3s ease;
+    backdrop-filter: blur(0px);
+}
+
+.blur-hover:hover {
+    backdrop-filter: blur(5px);
+}
+
+/* Анимация появления элементов при прокрутке (Intersection Observer) */
+.scroll-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Стили для анимированного индикатора загрузки */
+.loading-indicator {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--gold-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Эффект «волны» при клике (эффект Material Design) */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 215, 0, 0.3);
+    opacity: 0;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.ripple:active::after {
+    animation: rippleEffect 0.6s ease-out;
+}
+
+@keyframes rippleEffect {
+    to {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* Анимация для счётчиков с плавным увеличением чисел */
+.counter {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--gold-accent);
+    display: inline-block;
+}
+
+/* Для реализации плавного счёта потребуется JavaScript */
+
+/* Эффект параллакса для изображений */
+.parallax-image {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    position: relative;
+}
+
+/* Стили для интерактивных элементов форм с анимацией */
+.form-input {
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(44, 62, 80, 0.5);
+    color: white;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Анимация для выпадающих меню */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(44, 62, 80, 0.95);
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    animation: dropdownFade 0.3s ease-out;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Эффект свечения для кнопок при фокусе */
+.btn:focus {
+    outline: none;
+    box-shadow:
+        0 0 0 2px rgba(255, 215, 0, 0.3),
+        0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Анимация для разделительных линий */
+.divider {
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold-accent),
+        transparent
+    );
+    margin: 2rem 0;
+    position: relative;
+}
+
+.divider::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 0, 0.5),
+        transparent
+    );
+    animation: dividerGlow 3s infinite alternate;
+}
+
+@keyframes dividerGlow {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .neon-title {
+        font-size: 1.8rem;
+        text-shadow:
+            0 0 5px var(--gold-accent),
+            0 0 10px var(--gold-accent),
+            0 0 20px var(--military-green);
+    }
+
+    /* Отключаем тяжёлые анимации на планшетах */
+    .digital-rain,
+    .scan-effect,
+    .wave-bg {
+        display: none;
+    }
+}
+
+/* Оптимизация для печати */
+@media print {
+    * {
+        animation: none !important;
+        /* Оптимизация для печати — продолжение */
+@media print {
+    * {
+        animation: none !important;
+        transition: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .animated-bg,
+    .scan-effect,
+    .digital-rain,
+    .wave-bg,
+    .parallax-bg,
+    .particle,
+    .holographic::before {
+        display: none !important;
+    }
+
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    a {
+        text-decoration: underline !important;
+        color: black !important;
+    }
+}
+
+/* Финальные глобальные стили и сброс */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #121212;
+    overflow-x: hidden;
+}
+
+/* Общие переходы для всех интерактивных элементов */
+a,
+button,
+.btn,
+.card,
+.ripple,
+.form-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Стили для элементов с фокусом (доступность) */
+:focus-visible {
+    outline: 2px solid var(--gold-accent);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+}
+
+/* Класс для отключения анимаций при необходимости */
+.no-animation * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+}
+
+/* Классы для управления видимостью элементов */
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+/* Стили для полноэкранного режима */
+:fullscreen {
+    background: var(--primary-dark);
+}
+
+/* Переменные для цветовой схемы — финальная версия */
+:root {
+    --primary-dark: #0a1218;
+    --steel-gray: #2c3e50;
+    --military-green: #3e5a44;
+    --olive-green: #4a6b3c;
+    --gold-accent: #ffd700;
+    --text-color: #ffffff;
+    --bg-color: #121212;
+}
+
+/* Утилитарные классы */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; }
+
+/* Финальная анимация загрузки страницы */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOutLoader 1s forwards 2s;
+}
+
+@keyframes fadeOutLoader {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* Класс для скрытия лоадера после загрузки */
+.loaded .page-loader {
+    display: none;
+}
+
+/* Финальные стили для адаптивности */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration:
