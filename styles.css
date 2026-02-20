@@ -1,173 +1,127 @@
-:root {
-    --primary-dark: #1a2530;
-    --steel-gray: #2c3e50;
-    --military-green: #2e7d32;
-    --olive-green: #33691e;
-    --red-alert: #c62828;
-    --gold-accent: #ffd700;
-    --text-light: #f5f5f5;
-    --text-gray: #bdbdbd;
-    --bg-dark-overlay: rgba(26, 37, 48, 0.85);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Красивые фоны */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-light);
-    background: linear-gradient(135deg, var(--primary-dark), #0a1218) fixed;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(46, 125, 50, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, var(--primary-dark), #0a1218) fixed;
     background-size: cover;
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
 }
 
-/* Текстуры военной тематики */
-body::before {
-    content: '';
-    position: absolute;
+/* Анимированный фон с частицами */
+.animated-bg {
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.05) 25%,
-        rgba(255,255,255,0.05) 50%, transparent 50%,
-        transparent 75%, rgba(255,255,255,0.05) 75%,
-        rgba(255,255,255,0.05)),
-        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%,
-        transparent 50%, rgba(255,255,255,0.05) 50%,
-        rgba(255,255,255,0.05) 75%, transparent 75%,
-        transparent);
-    background-size: 40px 40px;
-    opacity: 0.1;
-    z-index: -1;
-}
-
-h1, h2, h3, .logo {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.typed-text, .document-text {
-    font-family: 'Courier New', monospace;
-    line-height: 1.5;
-}
-
-/* Шапка сайта */
-header {
-    background: var(--bg-dark-overlay);
-    backdrop-filter: blur(5px);
-    border-bottom: 2px solid var(--gold-accent);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    border-top: 3px solid var(--military-green);
-}
-
-.logo {
-    font-size: 1.8rem;
-    color: var(--gold-accent);
-    text-shadow:
-        0 0 10px rgba(255, 215, 0, 0.3),
-        0 0 20px rgba(255, 215, 0, 0.2);
-    animation: pulse 3s infinite alternate;
-}
-
-@keyframes pulse {
-    from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-    to { text-shadow: 0 0 25px rgba(255, 215, 0, 0.5), 0 0 35px rgba(255, 215, 0, 0.3); }
-}
-
-/* Навигация */
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav li {
-    margin-left: 2rem;
-}
-
-nav a {
-    color: var(--text-gray);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-    padding-bottom: 5px;
-    font-size: 0.9rem;
-}
-
-nav a:hover {
-    color: var(--military-green);
-}
-
-nav a.active {
-    color: var(--gold-accent);
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--red-alert);
-    transition: width 0.3s ease;
-}
-
-nav a:hover::after,
-nav a.active::after {
     width: 100%;
+    height: 100%;
+    z-index: -2;
 }
 
-/* Герой‑секция на главной странице */
-.hero {
-    text-align: center;
-    padding: 4rem 2rem;
+.particle {
+    position: absolute;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Плавные переходы для всех элементов */
+* {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity, box-shadow;
+}
+
+/* Плавное появление элементов при загрузке */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Плавная анимация для кнопок */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: var(--military-green);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    border: 1px solid var(--olive-green);
+    box-shadow: 0 3px 0 var(--olive-green);
     position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
 }
 
-.hero::before {
+.btn::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(44, 62, 80, 0.7);
-    z-index: -1;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+    transition: left 0.5s;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    color: var(--gold-accent);
-    text-shadow:
-        0 0 15px rgba(255, 215, 0, 0.4),
-        0 0 30px rgba(255, 215, 0, 0.2);
+.btn:hover::before {
+    left: 100%;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    color: var(--text-gray);
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 var(--military-green);
+    background: var(--olive-green);
 }
 
-/* Секции с ресурсами */
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 0 var(--olive-green);
+}
+
+/* Плавная анимация для карточек */
 .resources {
     background: var(--bg-dark-overlay);
     margin: 2rem auto;
@@ -180,101 +134,280 @@ nav a.active::after {
     border: 1px solid rgba(255,255,255,0.1);
     position: relative;
     overflow: hidden;
+    transform: scale(1);
+    opacity: 1;
 }
 
-.resources::before {
+.resources:hover {
+    transform: scale(1.02);
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* Анимация для важных уведомлений */
+.important-note {
+    background: rgba(198, 40, 40, 0.15);
+    border-left: 4px solid var(--red-alert);
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid rgba(198, 40, 40, 0.3);
+    position: relative;
+    animation: pulse-glow 4s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(198, 40, 40, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(198, 40, 40, 0.2); }
+}
+
+/* Плавная прокрутка для всего сайта */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Анимация появления элементов при скролле */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Эффект параллакса для заголовка */
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--gold-accent);
+    text-shadow:
+        0 0 15px rgba(255, 215, 0, 0.4),
+        0 0 30px rgba(255, 215, 0, 0.2);
+    animation: glow 3s infinite alternate;
+    position: relative;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); }
+    to { text-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.4); }
+}
+
+/* Плавная смена цвета ссылок */
+nav a {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+nav a:hover {
+    color: var(--military-green);
+    transform: translateX(3px);
+}
+
+/* Продолжение стилей для таблицы с анимацией загрузки */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: rgba(44, 62, 80, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    animation: tableLoad 0.8s ease-out;
+}
+
+@keyframes tableLoad {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.schedule-table thead {
+    background: linear-gradient(to right, var(--military-green), var(--olive-green));
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+}
+
+.schedule-table th {
+    color: white;
+    font-weight: 600;
+}
+
+.schedule-table tbody tr:nth-child(even) {
+    background: rgba(26, 37, 48, 0.4);
+}
+
+.schedule-table tbody tr:hover {
+    background: rgba(46, 125, 50, 0.2);
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+}
+
+/* Анимация появления элементов при скролле */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Эффект параллакса для заголовка */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
     content: '';
     position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
-    bottom: -1px;
-    background: linear-gradient(45deg,
-        transparent,
-        var(--military-green),
-        transparent,
-        var(--olive-green));
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(44, 62, 80, 0.7);
     z-index: -1;
-    border-radius: 9px;
+    animation: heroGlow 5s infinite alternate;
 }
-<!-- Важные правила с эмодзи -->
-<div class="important-note emoji-section warning">
-    <h2>⚠️ ОСНОВНЫЕ ПРАВИЛА ⚠️</h2>
-    <ul class="emoji-list">
-        <li data-emoji="🕒">Срок на сдачу первичной аттестации: 5 дней</li>
-        <li data-emoji="⏱️">Срок на пересдачу: 2 дня после провала</li>
-        <li data-emoji="❌">Допустимое количество ошибок: не более 5</li>
-        <li data-emoji="🚫">Вторая пересдача не предусмотрена</li>
-        <li data-emoji="⚠️">При провале второй попытки — перевод в РМТО/ДШР</li>
-    </ul>
-</div>
 
-<!-- Программа аттестации с эмодзи -->
-<h2>📝 ТЕМЫ АТТЕСТАЦИИ 📝</h2>
-<ol class="emoji-list">
-    <li data-emoji="📖">Внутренний устав ВЧ</li>
-    <li data-emoji="📖">Устав ВП</li>
-    <li data-emoji="📜">ФЗ «О территориях с ограниченным доступом»</li>
-    <li data-emoji="🔫">ФЗ «Об оружии»</li>
-    <li data-emoji="👮">ФЗ «О статусе военнослужащих и военной службе»</li>
-    <li data-emoji="⚖️">Уголовный кодекс</li>
-    <li data-emoji="📋">Федеральное постановление</li>
-    <li data-emoji="🚔">Правила и процесс задержания</li>
-    <li data-emoji="📋">Проверка на знание приказов Генерала</li>
-    <li data-emoji="🗺️">РСГУ</li>
-</ol>
+@keyframes heroGlow {
+    0% { box-shadow: inset 0 0 30px rgba(46, 125, 50, 0.3); }
+    50% { box-shadow: inset 0 0 50px rgba(46, 125, 50, 0.5); }
+    100% { box-shadow: inset 0 0 40px rgba(46, 125, 50, 0.4); }
+}
 
-<!-- Таблица этапов с эмодзи в заголовках -->
-<h2>🗓️ ЭТАПЫ ПРОХОЖДЕНИЯ 🗓️</h2>
-<table class="schedule-table">
-    <thead>
-        <tr>
-            <th>Этап 🛡️</th>
-            <th>Срок выполнения ⏱️</th>
-            <th>Условия ⚠️</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Первичная аттестация ✅</td>
-            <td>5 дней 🕒</td>
-            <td>Не более 5 ошибок ❌</td>
-        </tr>
-        <tr>
-            <td>Первая пересдача 🔄</td>
-            <td>2 дня после провала ⏱️</td>
-            <td>Те же условия 📝</td>
-        </tr>
-        <tr>
-            <td>Вторая пересдача 🚫</td>
-            <td>Не предусмотрена ❌</td>
-            <td>Перевод в РМТО/ДШР ⚠️</td>
-        </tr>
-    </tbody>
-</table>
+/* Плавная анимация для разделов ресурсов */
+.resources {
+    background: var(--bg-dark-overlay);
+    margin: 2rem auto;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    max-width: 900px;
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+    transform: scale(1);
+    opacity: 1;
+    animation: cardAppear 0.8s ease-out;
+}
 
-<!-- Дополнительные уведомления с эмодзи -->
-<div class="emoji-section info">
-    <h3>📢 ВАЖНАЯ ИНФОРМАЦИЯ 📢</h3>
-    <p>🔔 Все аттестации проводятся в присутствии офицера контроля.</p>
-    <p>📝 Результаты фиксируются в личном деле военнослужащего.</p>
-    <p>🗂️ По завершении успешной аттестации выдаётся удостоверение.</p>
-</div>
+@keyframes cardAppear {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
 
-<!-- Документ с печатной машинкой -->
-<div class="document-text">
-<pre>
-ПРИКАЗ № 045/ВП
-от 15.03.2024
+.resources:hover {
+    transform: scale(1.02);
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+}
 
-🎖️ Тема: Аттестация личного состава
+/* Анимация для важных уведомлений */
+.important-note {
+    background: rgba(198, 40, 40, 0.15);
+    border-left: 4px solid var(--red-alert);
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid rgba(198, 40, 40, 0.3);
+    position: relative;
+    animation: pulse-glow 4s infinite;
+}
 
-Настоящим приказываю:
-• Все военнослужащие обязаны пройти аттестацию в установленные сроки 🕒
-• Результаты должны быть предоставлены в штаб до 25.03.2024 🗓️
-• Лица, не прошедшие аттестацию, будут отстранены от выполнения обязанностей 🚫
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(198, 40, 40, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(198, 40, 40, 0.2); }
+}
 
-<span class="highlight">Подпись:</span> _________________
-<span class="highlight">Дата:</span> 15.03.2024
-</pre>
-</div>
+/* Плавные переходы для всех интерактивных элементов */
+* {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity, box-shadow;
+}
+
+/* Анимация загрузки страницы */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255,215,0,0.3);
+    border-top-color: var(--gold-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Плавное появление контента после загрузки */
+.content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+
+.content.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Адаптивные анимации */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
