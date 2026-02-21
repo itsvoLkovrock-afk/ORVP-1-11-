@@ -2173,26 +2173,6 @@ h1, h2, h3, h4 {
     flex-shrink: 0;
 }
 
-/* Специальный стиль для пункта «Форум ВП» (2‑й пункт) с паролем */
-.links-list li:nth-child(2) {
-    border-left-color: var(--mp-red);
-    padding-top: 22px;
-}
-
-.links-list li:nth-child(2)::after {
-    content: 'Пароль: 7d99156550e7';
-    position: absolute;
-    top: 4px;
-    right: 15px;
-    background: rgba(178, 34, 34, 0.2);
-    color: var(--mp-gold);
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    border: 1px solid rgba(255, 215, 0, 0.4);
-}
-
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
     .links-list {
