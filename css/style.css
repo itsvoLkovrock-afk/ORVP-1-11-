@@ -83,19 +83,6 @@ body::before {
     }
 }
 
-/* Сканирующая линия для эффекта монитора */
-.hero::after {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.3);
-    animation: scanLine 3s linear infinite;
-    pointer-events: none;
-}
-
 /* Шапка */
 .header {
     text-align: center;
