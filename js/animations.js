@@ -1,5 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Плавное появление элементов при прокрутке
+    // Создаём курсор-follower
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor-follow';
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Параллакс-эффект при скролле
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        document.querySelector('.parallax-bg').style.transform = `translateY(${scrollY * 0.5}px)`;
+    });
+
+    // Добавляем анимации к элементам
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -14,19 +30,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Наблюдаем за элементами с классом animate-on-scroll
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    // Применяем анимации к нужным элементам
+    document.querySelectorAll('.animate-on-scroll, .card-3d').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         observer.observe(el);
     });
 
-    // Добавляем класс animate-on-scroll к нужным элементам
-    document.querySelectorAll('.revision-item, .contact-item, .links-list li').forEach(el => {
-        el.classList.add('animate-on-scroll');
-    });
+    // Эффект печатной машинки для главного заголовка
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        heroTitle.classList.add('typewriter');
+    }
 
-    // Плавная прокрутка для навигации
+    // Плавная прокрутка
     document.querySelectorAll('.nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -43,12 +60,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Эффект мерцания для логотипа
+    // Мигающие индикаторы статуса
     setInterval(() => {
-        const logo = document.querySelector('.logo');
-        logo.style.textShadow = '0 0 10px rgba(253, 187, 45, 0.8)';
-        setTimeout(() => {
-            logo.style.textShadow = '0 0 20px rgba(253, 187, 45, 0.5)';
-        }, 500);
-    }, 3000);
+        const statusIndicators = document.querySelectorAll('.status-indicator');
+        statusIndicators.forEach(indicator => {
+            indicator.style.boxShadow = `0 0 10px ${indicator.dataset.color}`;
+            setTimeout(() => {
+                indicator.style.boxShadow = 'none';
+            }, 500);
+        });
+    }, 2000);
 });
