@@ -1,145 +1,104 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Создаём курсор-follower
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-follow';
-    document.body.appendChild(cursor);
+// Плавная прокрутка к якорям
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
 
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // Параллакс-эффект при скролле
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        document.querySelector('.parallax-bg').style.transform = `translateY(${scrollY * 0.5}px)`;
-    });
-
-    // Добавляем анимации к элементам
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Применяем анимации к нужным элементам
-    document.querySelectorAll('.animate-on-scroll, .card-3d').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        observer.observe(el);
-    });
-
-    // Эффект печатной машинки для главного заголовка
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        heroTitle.classList.add('typewriter');
-    }
-
-    // Плавная прокрутка
-    document.querySelectorAll('.nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId.startsWith('#')) {
-                const targetElement = document.querySelector(targetId);
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            } else {
-                window.location.href = targetId;
-            }
-        });
-    });
-
-    // Мигающие индикаторы статуса
-    setInterval(() => {
-        const statusIndicators = document.querySelectorAll('.status-indicator');
-        statusIndicators.forEach(indicator => {
-            indicator.style.boxShadow = `0 0 10px ${indicator.dataset.color}`;
-            setTimeout(() => {
-                indicator.style.boxShadow = 'none';
-            }, 500);
-        });
-    }, 2000);
-});
-// Добавляем класс loading-animation для плавного появления элементов
-document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    el.classList.add('loading-animation');
-});
-
-// Эффект «радара» для предупреждений
-document.querySelectorAll('.warning').forEach(warning => {
-    warning.classList.add('radar-effect');
-});
-
-// Анимация мигающих индикаторов статуса
-setInterval(() => {
-    const statusIndicators = document.querySelectorAll('.status-indicator');
-    statusIndicators.forEach(indicator => {
-        indicator.style.boxShadow = `0 0 10px ${indicator.dataset.color}`;
-        setTimeout(() => {
-            indicator.style.boxShadow = 'none';
-        }, 500);
-    });
-}, 2000);
-
-// Эффект следования за курсором для карточек
-document.querySelectorAll('.card-3d').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left; // позиция X относительно карточки
-        const y = e.clientY - rect.top;  // позиция Y относительно карточки
-
-        // Вычисляем угол поворота
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateY = ((x - centerX) / centerX) * 10; // макс. поворот 10 градусов
-        const rotateX = ((centerY - y) / centerY) * 10;
-
-        card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'rotateY(0) rotateX(0) scale(1)';
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
 
 // Анимация появления элементов при скролле
-const fadeElements = document.querySelectorAll('.fade-in');
-
-const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+function checkFadeInElements() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.classList.add('visible');
         }
     });
-}, { threshold: 0.1 });
+}
 
-fadeElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    fadeObserver.observe(el);
-});
+// Запускаем проверку при загрузке и скролле
+window.addEventListener('load', checkFadeInElements);
+window.addEventListener('scroll', checkFadeInElements);
 
-// Добавление звуковых эффектов (опционально)
-const audio = new Audio();
-audio.volume = 0.3;
-
-document.querySelectorAll('a, button').forEach(element => {
-    element.addEventListener('click', () => {
-        // Можно подключить короткий звуковой эффект
-        // audio.src = 'click-sound.mp3';
-        // audio.play().catch(e => console.log('Звук не воспроизведён:', e));
+// Активная навигация — подсветка текущего раздела
+function updateActiveNav() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-list a');
+    
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+            current = section.getAttribute('id');
+        }
     });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+
+// Инициализация при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // Добавляем анимацию появления для карточек
+    const cards = document.querySelectorAll('.card, .contact-card');
+    cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+    });
+    
+    // Проверяем видимость элементов при загрузке
+    checkFadeInElements();
 });
+
+// Мобильное меню (если понадобится в будущем)
+const mobileMenuToggle = document.createElement('div');
+mobileMenuToggle.className = 'menu-toggle';
+mobileMenuToggle.innerHTML = '☰';
+mobileMenuToggle.style.cssText = `
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+`;
+
+// Показ мобильного меню на маленьких экранах
+function setupMobileMenu() {
+    if (window.innerWidth <= 768) {
+        if (!document.body.contains(mobileMenuToggle)) {
+            document.querySelector('.header').appendChild(mobileMenuToggle);
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                document.querySelector('.nav-list').classList.toggle('active');
+            });
+        }
+    } else {
+        if (document.body.contains(mobileMenuToggle)) {
+            mobileMenuToggle.remove();
+        }
+    }
+}
+
+window.addEventListener('resize', setupMobileMenu);
+setupMobileMenu();
