@@ -1,23 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Плавная прокрутка для навигации
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (!targetElement) return;
-            
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Анимация появления элементов при прокрутке
+    // Плавное появление элементов при прокрутке
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -32,50 +14,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Применяем анимацию к элементам с определёнными классами
-    const animatedElements = document.querySelectorAll(
-        '.hero, .resources, .schedule-card, .instructions, .certification-rules, .certification-content, .contact-card'
-    );
-    
-    animatedElements.forEach(el => {
+    // Наблюдаем за элементами с классом animate-on-scroll
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
         observer.observe(el);
     });
 
+    // Добавляем класс animate-on-scroll к нужным элементам
+    document.querySelectorAll('.revision-item, .contact-item, .links-list li').forEach(el => {
+        el.classList.add('animate-on-scroll');
+    });
+
+    // Плавная прокрутка для навигации
+    document.querySelectorAll('.nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            } else {
+                window.location.href = targetId;
+            }
+        });
+    });
+
     // Эффект мерцания для логотипа
-    const logo = document.querySelector('.logo');
-    if (logo) {
-        setInterval(() => {
-            logo.style.textShadow = '0 0 20px #ff4757, 0 0 40px #ff4757';
-            setTimeout(() => {
-                logo.style.textShadow = '0 0 10px #ff4757';
-            }, 400);
-        }, 3000);
-    }
-
-    // Мигающие индикаторы статуса
     setInterval(() => {
-        const indicators = document.querySelectorAll('.status-indicator');
-        indicators.forEach(indicator => {
-            indicator.style.boxShadow = '0 0 8px ' + indicator.style.background;
-            setTimeout(() => {
-                indicator.style.boxShadow = 'none';
-            }, 600);
-        });
-    }, 2000);
-
-    // Добавление военных эффектов к элементам
-    const addMilitaryEffects = () => {
-        document.querySelectorAll('.schedule-card, .contact-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-8px)';
-                card.style.boxShadow = '0 12px 25px rgba(0, 0, 0, 0.6)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-                card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.4)';
-            });
-        });
-    };
-    addMilitaryEffects();
+        const logo = document.querySelector('.logo');
+        logo.style.textShadow = '0 0 10px rgba(253, 187, 45, 0.8)';
+        setTimeout(() => {
+            logo.style.textShadow = '0 0 20px rgba(253, 187, 45, 0.5)';
+        }, 500);
+    }, 3000);
 });
