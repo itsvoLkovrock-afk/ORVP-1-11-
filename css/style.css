@@ -628,3 +628,185 @@ html {
         text-decoration: underline;
     }
 }
+/* Стили для списка документов */
+.document-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.document-item {
+    background: rgba(44, 62, 80, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.document-item:hover {
+    transform: translateX(5px);
+    background: rgba(52, 73, 94, 0.9);
+}
+
+/* Номер документа */
+.doc-number {
+    min-width: 40px;
+    height: 40px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* Контент документа */
+.doc-content {
+    flex: 1;
+}
+
+.doc-title {
+    color: #ecf0f1;
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Ссылки документов */
+.doc-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.doc-link:hover {
+    color: #2980b9;
+}
+
+.link-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+/* Статус для документов в разработке */
+.disabled {
+    opacity: 0.6;
+    border-left: 3px solid #f39c12;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pending {
+    background: #f39c12;
+    color: white;
+}
+
+/* Анимация появления элементов */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.document-item {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+.document-item:nth-child(1) { animation-delay: 0.1s; }
+.document-item:nth-child(2) { animation-delay: 0.2s; }
+.document-item:nth-child(3) { animation-delay: 0.3s; }
+.document-item:nth-child(4) { animation-delay: 0.4s; }
+.document-item:nth-child(5) { animation-delay: 0.5s; }
+.document-item:nth-child(6) { animation-delay: 0.6s; }
+.document-item:nth-child(7) { animation-delay: 0.7s; }
+.document-item:nth-child(8) { animation-delay: 0.8s; }
+.document-item:nth-child(9) { animation-delay: 0.9s; }
+.document-item:nth-child(10) { animation-delay: 1s; }
+
+/* Адаптивность для списка документов */
+@media (max-width: 768px) {
+    .document-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .doc-number {
+        margin-bottom: 10px;
+    }
+    
+    .doc-content {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .doc-link {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .document-list {
+        gap: 10px;
+    }
+    
+    .doc-title {
+        font-size: 1rem;
+    }
+}
+
+/* Дополнительные стили для раздела правил */
+.rules {
+    background: rgba(34, 49, 63, 0.7);
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 4px solid #e74c3c;
+}
+
+.rules h3 {
+    color: #f39c12;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rules ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.rules li {
+    padding: 8px 0;
+    color: #bdc3c7;
+    position: relative;
+    padding-left: 20px;
+}
+
+.rules li::before {
+    content: "•";
+    color: #e74c3c;
+    position: absolute;
+    left: 0;
+}
