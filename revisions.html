@@ -3,56 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Об ревизиях — Военная полиция</title>
+    <title>Военная полиция — Ревизии</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="logo">AMAZING FIRE</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="revisions.html">Ревизии</a></li>
-                <li><a href="certification.html">Аттестация</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
+        <nav class="nav">
+            <a href="index.html">Главная</a>
+            <a href="revisions.html">Ревизии</a>
+            <a href="certification.html">Аттестация</a>
+            <a href="contacts.html">Контакты</a>
         </nav>
     </header>
-    
-    <main>
-        <section class="page-header">
+
+    <main class="main">
+        <section class="content">
             <h1>Проведение ревизий</h1>
-        </section>
-        
-        <section class="revisions-schedule">
-            <h2>График проведения ревизий:</h2>
-            <div class="schedule-card">
-                <h3>Утренняя ревизия</h3>
-                <p>10:00 - 12:00</p>
+            <div class="revisions-schedule">
+                <div class="revision-item">
+                    <h3>Утренняя ревизия</h3>
+                    <p>10:00 - 12:00</p>
+                </div>
+                <div class="revision-item">
+                    <h3>Обеденная ревизия</h3>
+                    <p>14:00 - 16:00</p>
+                </div>
+                <div class="revision-item">
+                    <h3>Вечерняя ревизия</h3>
+                    <p>20:00 - 22:00</p>
+                </div>
             </div>
-            <div class="schedule-card">
-                <h3>Обеденная ревизия</h3>
-                <p>14:00 - 16:00</p>
+
+            <div class="instructions">
+                <h2>Инструкции по проведению ревизий</h2>
+                <ol>
+                    <li>После проведения ревизии отправьте её в единую базу данных через <a href="https://vk.cc/cSJmRL">форму</a>.</li>
+                    <li>Заранее сообщайте о проведении ревизии на <a href="https://script.google.com/macros/s/AKfycbwdb4MV6V2CHnRSA190tCcwfXbqeJwZjQGOHdEOcw1t/dev">сайт</a>, чтобы избежать конфликтов.</li>
+                </ol>
             </div>
-            <div class="schedule-card">
-                <h3>Вечерняя ревизия</h3>
-                <p>20:00 - 22:00</p>
-            </div>
-        </section>
-        
-        <section class="instructions">
-            <h2>Инструкции по проведению ревизий</h2>
-            <ol>
-                <li>Заранее сообщайте о проведении ревизии на <a href="https://script.google.com/macros/s/AKfycbwdb4MV6V2CHnRSA190tCcwfXbqeJwZjQGOHdEOcw1t/dev">сайт записи</a>, чтобы избежать конфликтов и повторных проведений ревизии.</li>
-                <li>После проведения ревизии отправьте её в единую базу данных через <a href="https://vk.cc/cSJmRL">форму отправки ревизий</a>.</li>
-            </ol>
         </section>
     </main>
-    
-    <footer>
-        <p>© 2026 Военная полиция фракции Воинская часть. Все права защищены.</p>
+
+    <footer class="footer">
+        <p>Военная полиция фракции Воинская часть | 2026</p>
     </footer>
-    
+
     <script src="js/animations.js"></script>
 </body>
 </html>
