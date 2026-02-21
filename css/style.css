@@ -765,3 +765,232 @@ p, li, td {
         color: var(--text-light);
     }
 }
+/* Стили для раздела расписания ревизий */
+.schedule {
+    background: rgba(20, 35, 55, 0.8);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(100, 119, 131, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.schedule::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--mp-red), var(--mp-gold));
+}
+
+.schedule h3 {
+    color: var(--mp-light-blue);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    position: relative;
+    padding-left: 12px;
+}
+
+.schedule h3::before {
+    content: '📅';
+    position: absolute;
+    left: -28px;
+    top: -2px;
+}
+
+.schedule ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.schedule li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(100, 119, 131, 0.3);
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.schedule li::before {
+    content: '•';
+    color: var(--mp-gold);
+    position: absolute;
+    left: 0;
+}
+
+/* Стили для раздела инструкций */
+.instructions {
+    background: rgba(15, 26, 40, 0.9);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    border-left: 4px solid var(--mp-red);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.instructions h3 {
+    color: var(--mp-gold);
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    position: relative;
+    padding-left: 12px;
+}
+
+.instructions h3::before {
+    content: '📝';
+    position: absolute;
+    left: -32px;
+    top: -3px;
+}
+
+.instructions ol {
+    counter-reset: instruction-counter;
+    padding-left: 0;
+}
+
+.instructions li {
+    counter-increment: instruction-counter;
+    margin-bottom: 20px;
+    padding-left: 50px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.instructions li::before {
+    content: counter(instruction-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--mp-red);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Стили для ссылок внутри инструкций */
+.instructions a {
+    color: var(--mp-light-blue);
+    text-decoration: none;
+    padding-bottom: 2px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.instructions a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--mp-gold);
+    transition: width 0.3s;
+}
+
+.instructions a:hover {
+    color: var(--mp-gold);
+}
+
+.instructions a:hover::after {
+    width: 100%;
+}
+
+/* Дополнительные стили для основного контента */
+.content h2 {
+    color: var(--mp-gold);
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mp-red), transparent, var(--mp-red));
+}
+
+/* Анимация появления контента */
+.content > *:not(h2) {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.content > *:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.content > *:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .schedule,
+    .instructions {
+        padding: 20px 15px;
+    }
+    
+    .schedule h3,
+    .instructions h3 {
+        font-size: 1.3rem;
+    }
+    
+    .content h2 {
+        font-size: 1.7rem;
+    }
+    
+    .instructions li {
+        padding-left: 40px;
+    }
+    
+    .instructions li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Улучшение читаемости на маленьких экранах */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .schedule,
+    .instructions {
+        margin: 20px 0;
+        padding: 15px 10px;
+    }
+    
+    .instructions h3::before,
+    .schedule h3::before {
+        display: none;
+    }
+}
