@@ -994,135 +994,468 @@ p, li, td {
         display: none;
     }
 }
-/* Базовые правила для предотвращения переполнения текста */
-.schedule,
-.instructions,
-.content * {
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
+/* Стили для заголовка страницы */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
 }
 
-/* Конкретные настройки для проблемных элементов */
-.schedule li,
-.instructions li {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    max-height: 4.5em; /* ~3 строки */
-}
-
-.instructions a {
-    word-wrap: break-word;
-    overflow-wrap: break-all;
-}
-
-/* Улучшение переноса длинных слов и URL */
-.instructions li a {
+.section-title {
+    color: var(--mp-gold);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    position: relative;
     display: inline-block;
-    max-width: 100%;
-    word-break: break-all;
-    white-space: normal;
+    padding-bottom: 10px;
 }
 
-/* Дополнительные ограничения для всего контента */
-.content {
-    width: 100%;
-    max-width: 100%;
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--mp-red), transparent, var(--mp-red));
 }
 
-.container {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+.section-subtitle {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* Оптимизация для списков */
-.schedule ul,
-.instructions ol {
-    margin: 0;
-    padding: 0 0 0 20px;
+/* Стили для блока правил */
+.rules {
+    background: rgba(20, 35, 55, 0.8);
+    border-radius: 8px;
+    padding: 25px;
+    margin: 30px 0;
+    border: 1px solid rgba(100, 119, 131, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
-.schedule li,
-.instructions li {
+.rules h3 {
+    color: var(--mp-light-blue);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.rules ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.rules li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(100, 119, 131, 0.3);
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.rules li::before {
+    content: '•';
+    color: var(--mp-gold);
+    position: absolute;
+    left: 0;
+}
+
+/* Стили для списка документов */
+.document-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.document-item {
+    background: rgba(15, 26, 40, 0.9);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid rgba(100, 119, 131, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.document-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--mp-gold);
+}
+
+.document-item.disabled {
+    opacity: 0.7;
+    background: rgba(30, 45, 65, 0.6);
+    border-color: rgba(100, 119, 131, 0.5);
+}
+
+.doc-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--mp-red);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.doc-content {
+    margin-left: 45px;
+}
+
+.doc-title {
+    color: var(--mp-gold);
+    font-size: 1.2rem;
     margin-bottom: 12px;
-    line-height: 1.4;
+    line-height: 1.3;
 }
 
-/* Адаптация для мобильных устройств — усиленные меры */
+.doc-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--mp-light-blue);
+    text-decoration: none;
+    padding: 8px 12px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.doc-link:hover {
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--mp-gold);
+}
+
+.link-icon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+/* Стили для статуса «В разработке» */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(255, 165, 0, 0.2);
+    color: gold;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 165, 0, 0.4);
+}
+
+.status-badge.pending {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 165, 0, 0);
+    }
+}
+
+/* Анимация появления элементов */
+.content > *:not(.page-header) {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.content > *:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.content > *:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
-    .schedule,
-    .instructions {
-        padding: 18px 12px;
-        margin: 25px 0;
+    .document-list {
+        grid-template-columns: 1fr;
     }
     
-    .schedule h3,
-    .instructions h3 {
-        font-size: 1.2rem;
-        padding-left: 8px;
+    .doc-content {
+        margin-left: 40px;
     }
     
-    .schedule li,
-    .instructions li {
-        padding-left: 16px;
-        font-size: 0.95rem;
-        line-height: 1.3;
-        -webkit-line-clamp: 4; /* больше строк на мобильных */
-        max-height: 6em;
+    .doc-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
     }
     
-    .instructions a {
-        font-size: 0.9rem;
+    .section-title {
+        font-size: 1.7rem;
+    }
+    
+    .rules li,
+    .doc-title {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding-right: 8px;
-        padding-left: 8px;
+        padding-right: 10px;
+        padding-left: 10px;
     }
     
-    .schedule,
-    .instructions {
-        margin: 20px 0;
+    .rules,
+    .document-item {
         padding: 15px 10px;
     }
     
-    .schedule li,
-    .instructions li {
-        font-size: 0.85rem;
-        line-height: 1.25;
-        -webkit-line-clamp: 5; /* ещё больше строк */
-        max-height: 7.5em;
+    .doc-content {
+        margin-left: 35px;
     }
     
-    .instructions li::before {
+    .doc-title {
+        font-size: 0.95rem;
+    }
+    
+    .status-badge {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+}
+
+/* Защита от переполнения текста */
+.doc-title,
+.rules li {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.doc-link {
+    word-wrap: break-word;
+    white-space: normal;
+}
+/* Стили для прогресса аттестации (дополнительный блок) */
+.progress-section {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.progress-bar {
+    background: rgba(100, 119, 131, 0.3);
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--mp-red), var(--mp-gold));
+    width: 45%; /* Текущий прогресс */
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    color: var(--text-light);
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+/* Улучшение читаемости длинных названий документов */
+.doc-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Ограничение до 2 строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+}
+
+/* Адаптация ссылок для длинных URL */
+.doc-link {
+    word-wrap: break-word;
+    word-break: break-all;
+    max-width: 100%;
+}
+
+.doc-link span.link-icon {
+    flex-shrink: 0;
+}
+
+/* Дополнительные визуальные эффекты для активных элементов */
+.document-item:not(.disabled):hover .doc-number {
+    background: var(--mp-gold);
+    transform: rotate(15deg);
+    transition: all 0.3s ease;
+}
+
+/* Стили для выделения текущего документа (если нужно) */
+.document-item.current {
+    border-left: 4px solid var(--mp-gold);
+    padding-left: 15px;
+}
+
+.document-item.current .doc-title {
+    color: var(--mp-light-blue);
+}
+
+/* Улучшение контрастности текста */
+.rules strong,
+.doc-title,
+.section-title {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Стили для предупреждающих элементов */
+.warning-box {
+    background: rgba(178, 34, 34, 0.1);
+    border: 1px solid rgba(178, 34, 34, 0.4);
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin: 25px 0;
+    color: rgba(255, 215, 0, 0.9);
+}
+
+.warning-box h4 {
+    color: var(--mp-gold);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Анимация для элементов в разработке */
+.disabled .status-badge {
+    animation: pulseWarning 2s infinite;
+}
+
+@keyframes pulseWarning {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(255, 165, 0, 0);
+        transform: scale(1.05);
+    }
+}
+
+/* Оптимизация отступов для лучшей читаемости */
+.content > *:not(h2) {
+    margin-bottom: 25px;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+/* Специальные стили для важных правил */
+.rules li:nth-child(4) { /* Правило о переводе в РМТО/ДШР */
+    color: var(--mp-red);
+    font-weight: 600;
+    animation: highlight 2s ease-in-out;
+}
+
+@keyframes highlight {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(178, 34, 34, 0.2); }
+}
+
+/* Улучшение взаимодействия на сенсорных устройствах */
+.doc-link {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Финальные меры защиты от переполнения */
+* {
+    box-sizing: border-box;
+}
+
+.container,
+.content,
+.document-list,
+.document-item,
+.doc-content {
+    width: 100%;
+    max-width: 100%;
+}
+
+.doc-title,
+.rules li,
+.status-badge {
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Адаптивные стили для очень маленьких экранов */
+@media (max-width: 360px) {
+    .doc-number {
         width: 24px;
         height: 24px;
         font-size: 0.7rem;
     }
+    
+    .doc-content {
+        margin-left: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .rules li {
+        font-size: 0.9rem;
+        line-height: 1.2;
+    }
+    
+    .document-list {
+        gap: 12px;
+    }
+    
+    .document-item {
+        padding: 12px 8px;
+    }
 }
 
-/* Универсальное решение для всех текстовых контейнеров */
-[class*="content"],
-[class*="schedule"],
-[class*="instructions"] {
-    min-height: auto;
-    min-width: auto;
-}
-
-/* Финальная защита от переполнения */
-* {
-    max-width: 100%;
-}
-
-.content > *:not(h2) {
-    width: 100%;
-    box-sizing: border-box;
+/* Поддержка тёмной темы (если есть) */
+@media (prefers-color-scheme: dark) {
+    .rules,
+    .document-item {
+        background: rgba(10, 20, 30, 0.95);
+        border-color: rgba(80, 95, 105, 0.6);
+    }
+    
+    .doc-title {
+        color: #ffd700;
+    }
+    
+    .doc-link {
+        color: #87ceeb;
+    }
+    
+    .status-badge {
+        background: rgba(255, 165, 0, 0.3);
+        color: #ffd700;
+        border-color: rgba(255, 165, 0, 0.6);
+    }
 }
