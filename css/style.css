@@ -1,14 +1,16 @@
-/* Общие переменные для военной тематики */
+/* Общие переменные для темы военной полиции */
 :root {
-    --military-dark: #2a3b4d;
-    --military-olive: #6b8e23;
-    --military-gold: #d4af37;
-    --military-khaki: #f0e68c;
-    --military-red: #8b0000;
+    --mp-dark: #1a2a3a; /* Тёмно‑синий */
+    --mp-midnight: #0f1a28; /* Почти чёрный */
+    --mp-gold: #ffd700; /* Золотой для акцентов */
+    --mp-silver: #c0c0c0; /* Серебряный */
+    --mp-red: #b22222; /* Военный красный */
+    --mp-gray: #4a5763; /* Серый для элементов */
+    --mp-light-blue: #87ceeb; /* Небесно‑голубой для акцентов */
     --text-light: #f8f8f8;
     --text-medium: #ccc;
-    --shadow-deep: 0 10px 20px rgba(0, 0, 0, 0.3);
-    --transition-military: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-deep: 0 10px 25px rgba(0, 0, 0, 0.4);
+    --transition-military: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Базовые стили */
@@ -20,10 +22,29 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--military-dark), #1a2a3a);
+    background: linear-gradient(135deg, var(--mp-midnight), var(--mp-dark) 60%, #0a121a);
     color: var(--text-light);
     line-height: 1.6;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Фоновый узор — сетка военной карты */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(var(--mp-gray) 1px, transparent 1px),
+        linear-gradient(90deg, var(--mp-gray) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -33,139 +54,281 @@ body {
 }
 
 /* Анимации */
-@keyframes militarySlideIn {
-    from {
-        opacity: 0;
+@keyframes militaryPan {
+    0% {
         transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseBadge {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(255, 215, 0, 0);
+    }
+}
+
+@keyframes scanLine {
+    from {
+        top: -100%;
     }
     to {
-        opacity: 1;
-        transform: translateX(0);
+        top: 100%;
     }
+}
+
+/* Сканирующая линия для эффекта монитора */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    animation: scanLine 3s linear infinite;
+    pointer-events: none;
 }
 
 /* Шапка */
 .header {
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 45px 0 25px;
+    background: rgba(10, 20, 30, 0.85);
+    border-bottom: 2px solid var(--mp-red);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--mp-gold), transparent);
+    animation: pulseBadge 2s infinite;
 }
 
 .amazing-fire {
-    color: var(--military-gold);
-    font-size: 2.5rem;
+    color: var(--mp-gold);
+    font-size: 2.8rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    text-shadow:
+        0 0 15px rgba(255, 215, 0, 0.5),
+        0 0 30px rgba(255, 215, 0, 0.3);
+    margin-bottom: 10px;
+    position: relative;
 }
 
 .tagline {
-    color: var(--military-khaki);
-    font-size: 1.1rem;
+    color: var(--mp-silver);
+    font-size: 1.2rem;
     font-weight: 300;
-    margin-top: 10px;
 }
 
 /* Навигация */
 .navbar {
-    background: rgba(26, 42, 58, 0.9);
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(107, 142, 35, 0.3);
+    background: rgba(15, 26, 40, 0.95);
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(178, 34, 34, 0.4);
+    position: relative;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mp-red), transparent, var(--mp-red));
 }
 
 .nav-list {
     display: flex;
     justify-content: center;
     list-style: none;
-    gap: 30px;
+    gap: 40px;
 }
 
 .nav-list a {
     color: var(--text-medium);
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 10px 18px;
     border-radius: 4px;
+    transition: var(--transition-military);
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--mp-gold);
     transition: var(--transition-military);
 }
 
 .nav-list a:hover,
 .nav-list a.active {
-    color: var(--military-gold);
-    background: rgba(107, 142, 35, 0.2);
+    color: var(--mp-gold);
 }
 
-/* Заголовки секций */
-.page-header {
-    text-align: center;
-    margin-bottom: 40px;
+.nav-list a:hover::after,
+.nav-list a.active::after {
+    width: 80%;
 }
 
-.section-title {
-    color: var(--military-gold);
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+/* Основной контент */
+.main {
+    flex: 1;
+}
+
+/* Герой-секция */
+.hero {
     position: relative;
+    background:
+        radial-gradient(circle at 30% 70%, rgba(184, 134, 11, 0.15), transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(135, 206, 235, 0.1), transparent 50%),
+        rgba(10, 20, 30, 0.9);
+    padding: 70px 0;
+    text-align: center;
+    animation: militaryPan 1.2s ease-out;
 }
 
-.section-title::after {
+.hero h2 {
+    color: var(--mp-gold);
+    font-size: 2.4rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.hero p {
+    color: var(--text-medium);
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+/* Быстрый доступ */
+.quick-links {
+    padding: 70px 0;
+    background: rgba(15, 26, 40, 0.8);
+    }
+
+
+.quick-links h3 {
+    text-align: center;
+    color: var(--mp-gold);
+    font-size: 1.9rem;
+    margin-bottom: 45px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.quick-links h3::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
     height: 3px;
-    background: var(--military-olive);
+    background: linear-gradient(90deg, var(--mp-red), var(--mp-gold));
 }
 
-.section-subtitle {
-    color: var(--military-khaki);
-    font-size: 1.1rem;
-    font-weight: 300;
-}
-
-/* Стили для index.html */
-.welcome-grid {
+.cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
 }
 
-.welcome-card {
-    background: rgba(42, 59, 77, 0.9);
-    padding: 30px;
+.card {
+    background: rgba(20, 35, 55, 0.9);
+    padding: 35px 25px;
     border-radius: 8px;
-    border-left: 4px solid var(--military-olive);
+    border: 1px solid rgba(100, 119, 131, 0.3);
     transition: var(--transition-military);
+    text-align: center;
+    animation: militaryPan 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     position: relative;
-    animation: militarySlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    overflow: hidden;
 }
 
-.welcome-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    background: rgba(50, 70, 90, 0.95);
+/* Эффект печати для карточек */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent
+    );
+    transition: left 0.5s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    background: rgba(30, 48, 70, 0.98);
     box-shadow: var(--shadow-deep);
+    border-color: var(--mp-gold);
 }
 
-.card-title {
-    color: var(--military-gold);
+.card h4 {
+    color: var(--mp-gold);
     font-size: 1.4rem;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     font-weight: 600;
+    position: relative;
 }
 
-.card-text {
+.card h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--mp-red);
+}
+
+.card p {
     color: var(--text-medium);
+    margin-bottom: 28px;
     line-height: 1.6;
-    margin-bottom: 20px;
 }
 
-.link-button {
+.btn {
     display: inline-block;
-    padding: 12px 30px;
-    background: linear-gradient(135deg, var(--military-olive), var(--military-dark));
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--mp-red), var(--mp-dark));
     color: white;
     text-decoration: none;
     border-radius: 6px;
@@ -173,162 +336,106 @@ body {
     transition: var(--transition-military);
     text-align: center;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
     border: none;
 }
 
-.link-button:hover {
-    background: var(--military-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Стили для links.html */
-.links-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 25px;
-}
-
-.link-card {
-    background: rgba(42, 59, 77, 0.9);
-    padding: 25px;
-    border-radius: 8px;
-    border-top: 3px solid var(--military-olive);
-    transition: var(--transition-military);
-    text-align: center;
-    animation: militarySlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.link-title {
-    color: var(--military-gold);
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-.link-description {
-    color: var(--text-medium);
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-/* Стили для revisions.html */
-.revision-timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 40px auto;
-}
-
-.revision-timeline::before {
+.btn::before {
     content: '';
     position: absolute;
-    left: 50%;
     top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--military-red), var(--military-olive));
-    transform: translateX(-50%);
-}
-
-.revision-item {
-    position: relative;
-    margin-bottom: 40px;
-    padding-left: 60px;
-}
-
-.revision-item::before {
-    content: '';
-    position: absolute;
-    left: calc(50% - 10px);
-    top: 0;
-    width: 20px;
-    height: 20px;
-        background: var(--military-dark);
-    border: 3px solid var(--military-gold);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.revision-date {
-    color: var(--military-khaki);
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-}
-
-.revision-title {
-    color: var(--text-light);
-    margin-bottom: 8px;
-    font-size: 1.2rem;
-}
-
-.revision-description {
-    color: var(--text-medium);
-    line-height: 1.5;
-}
-
-/* Таблица изменений */
-.revision-table {
+    left: -100%;
     width: 100%;
-    border-collapse: collapse;
-    margin: 30px 0;
-    background: rgba(42, 59, 77, 0.8);
-    border-radius: 8px;
-    overflow: hidden;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.5s;
+    z-index: -1;
 }
 
-.revision-table th {
-    background: var(--military-olive);
-    color: white;
-    padding: 15px;
-    text-align: left;
+.btn:hover::before {
+    left: 100%;
 }
 
-.revision-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.revision-table tr:hover {
-    background: rgba(50, 70, 90, 0.6);
+.btn:hover {
+    background: linear-gradient(135deg, var(--mp-gold), var(--mp-dark));
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Подвал */
 .footer {
-    background: rgba(26, 42, 58, 0.9);
-    padding: 30px 0;
-    margin-top: 60px;
-    border-top: 1px solid rgba(107, 142, 35, 0.3);
+    background: rgba(10, 18, 28, 0.95);
+    padding: 40px 0;
+    border-top: 1px solid var(--mp-red);
+    margin-top: 80px;
+    position: relative;
 }
 
-.footer-content {
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--mp-gold), transparent);
+}
+
+.footer p {
     text-align: center;
-}
-
-.copyright {
-    color: var(--military-khaki);
-    font-size: 0.9rem;
+    color: var(--mp-silver);
+    font-size: 0.95rem;
+    margin: 0;
 }
 
 /* Адаптивность */
+@media (max-width: 992px) {
+    .amazing-fire {
+        font-size: 2.4rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .quick-links h3 {
+        font-size: 1.7rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-list {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-    }
-
-    .welcome-grid,
-    .links-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
     }
 
     .amazing-fire {
         font-size: 2rem;
     }
 
-    .section-title {
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero h2 {
         font-size: 1.8rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .card {
+        padding: 25px 20px;
     }
 }
 
@@ -338,26 +445,37 @@ body {
     }
 
     .header {
-        padding: 30px 15px 15px;
+        padding: 30px 15px 20px;
     }
 
-    .welcome-card,
-    .link-card {
-        padding: 20px;
+    .amazing-fire {
+        font-size: 1.8rem;
     }
 
-    .revision-timeline {
-        margin: 20px auto;
+    .tagline {
+        font-size: 1rem;
     }
 
-    .revision-item {
-        padding-left: 40px;
+    .hero {
+        padding: 40px 0;
     }
 
-    .revision-item::before {
-        left: calc(50% - 8px);
-        width: 16px;
-        height: 16px;
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .quick-links {
+        padding: 50px 0;
+    }
+
+    .quick-links h3 {
+        font-size: 1.5rem;
+        margin-bottom: 35px;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.9rem;
     }
 }
 
@@ -367,54 +485,22 @@ body {
     transition-duration: 0s !important;
 }
 
-/* Стили для состояний */
+/* Специальные состояния */
 .user-is-tabbing :focus {
-    outline: 3px solid var(--military-gold);
+    outline: 3px solid var(--mp-gold);
     outline-offset: 3px;
 }
 
 /* Дополнительные визуальные эффекты */
-.military-pulse {
-    animation: pulseMilitary 1.5s infinite;
-}
-
-@keyframes pulseMilitary {
-    0% {
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
-    }
-}
-
-/* Специальные классы для элементов */
-.disabled {
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-.status-badge {
+.badge-important {
     display: inline-block;
     padding: 4px 12px;
-    border-radius: 20px;
+    background: var(--mp-red);
+    color: white;
+    border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 600;
-}
-
-.status-pending {
-    background: rgba(107, 142, 35, 0.2);
-    color: var(--military-olive);
-}
-
-.rank-badge {
-    background: rgba(212, 175, 55, 0.2);
-    color: var(--military-gold);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.85rem;
+    margin-left: 8px;
 }
 
 /* Улучшение читаемости текста */
@@ -424,11 +510,258 @@ p, li, td {
     -moz-hyphens: auto;
 }
 
-/* Предотвращение выделения текста на кнопках */
+/* Предотвращение выделения текста на интерактивных элементах */
 .link-button,
-.doc-link {
+.doc-link,
+.btn {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+/* Специальные эффекты для важных элементов */
+.highlight-important {
+    color: var(--mp-gold);
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.emergency-notice {
+    background: rgba(178, 34, 34, 0.2);
+    border-left: 4px solid var(--mp-red);
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    animation: pulseBadge 2s infinite;
+}
+
+/* Анимация мигания для предупреждений */
+@keyframes blinkWarning {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0.6;
+    }
+}
+
+.warning-flash {
+    animation: blinkWarning 1.5s infinite;
+    color: var(--mp-red);
+    font-weight: 600;
+}
+
+/* Эффект печатной машинки для заголовков */
+.typewriter {
+    overflow: hidden;
+    border-right: 3px solid var(--mp-gold);
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: var(--mp-gold);
+    }
+}
+
+/* Стили для таблиц (если появятся на страницах) */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    background: rgba(20, 35, 55, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th {
+    background: linear-gradient(135deg, var(--mp-red), var(--mp-dark));
+    color: white;
+    padding: 16px 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.table td {
+    padding: 14px 12px;
+    border-bottom: 1px solid rgba(100, 119, 131, 0.3);
+    color: var(--text-medium);
+}
+
+.table tr:hover {
+    background: rgba(30, 48, 70, 0.8);
+}
+
+/* Стили для форм (если появятся) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--mp-silver);
+    font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(10, 20, 30, 0.8);
+    border: 1px solid rgba(100, 119, 131, 0.5);
+    border-radius: 4px;
+    color: var(--text-light);
+    transition: var(--transition-military);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--mp-gold);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+/* Стили для кнопок действий */
+.btn-action {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--mp-olive), var(--mp-dark));
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: var(--transition-military);
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-action:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, var(--mp-gold), var(--mp-dark));
+}
+
+/* Стили для статусных индикаторов */
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.status-online {
+    background: #32cd32;
+    box-shadow: 0 0 10px #32cd32;
+}
+
+.status-offline {
+    background: var(--mp-red);
+}
+
+.status-away {
+    background: gold;
+}
+
+/* Дополнительные анимации для элементов */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    transform: translateY(20px);
+    animation: slideUp 0.8s forwards;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Стили для модальных окон (если понадобятся) */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 18, 28, 0.95);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--mp-midnight);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    border: 1px solid var(--mp-gray);
+    position: relative;
+    animation: militaryPan 0.6s;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--mp-silver);
+}
+
+/* Оптимизация для печати */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .navbar,
+    .footer,
+    .btn {
+        display: none;
+    }
+
+    .container {
+        padding: 0;
+    }
+}
+
+/* Тёмная тема (на случай, если понадобится) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: var(--mp-midnight);
+        color: var(--text-light);
+    }
 }
