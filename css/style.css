@@ -5,23 +5,18 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    color: #e0e0e0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a1a0f"/><path d="M0 0l50 50-50 50 50-50z" fill="%231a2a1f" opacity="0.1"/></svg>'),
+              linear-gradient(135deg, #0a1a0f, #1a2a1f, #2a3a2f);
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 header {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: rgba(10, 30, 15, 0.95);
+    border-bottom: 3px solid #8b0000;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -30,13 +25,16 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(5px);
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #ff4757;
-    text-shadow: 0 0 10px #ff4757;
+    text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    letter-spacing: 2px;
+    font-family: 'Courier New', monospace;
 }
 
 nav ul {
@@ -49,10 +47,11 @@ nav li {
 }
 
 nav a {
-    color: white;
+    color: #c0c0c0;
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
+    font-weight: 500;
 }
 
 nav a:hover {
@@ -88,20 +87,31 @@ main {
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
-    color: white;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .resources {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(20, 40, 20, 0.8);
     padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    border: 1px solid #3a5a3f;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s forwards 0.4s;
+    backdrop-filter: blur(3px);
 }
 
 .resource-list {
@@ -110,50 +120,68 @@ main {
 }
 
 .resource-list li {
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(60, 90, 63, 0.3);
+    position: relative;
+}
+
+.resource-list li::before {
+    content: '▶';
+    color: #ff4757;
+    position: absolute;
+    left: -1.5rem;
 }
 
 .resource-list a {
-    color: #1a2a6c;
+    color: #98fb98;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .resource-list a:hover {
-    color: #ff4757;
+    color: #00ff7f;
 }
 
 .page-header {
     text-align: center;
     margin-bottom: 2rem;
     padding: 2rem 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(10, 30, 15, 0.9);
     color: white;
+    border-bottom: 2px solid #8b0000;
 }
 
 .schedule-card, .contact-card {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: rgba(20, 40, 20, 0.7);
+    padding: 1.8rem;
+    margin-bottom: 1.8rem;
+    border-radius: 6px;
+    border: 1px solid #3a5a3f;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.schedule-card:hover, .contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
 }
 
 .schedule-card h3, .contact-card h3 {
-    color: #1a2a6c;
-    margin-bottom: 0.5rem;
+    color: #98fb98;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
 }
 
 .instructions, .certification-rules, .certification-content {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(20, 40, 20, 0.7);
     padding: 2rem;
-    border-radius: 15px;
-        margin-top: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #3a5a3f;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s forwards;
@@ -161,73 +189,157 @@ main {
 
 .instructions ol, .certification-rules ul, .certification-content ul {
     margin-left: 2rem;
+    counter-reset: list-counter;
 }
 
+.instructions li, .certification-rules li, .certification-content li {
+    position: relative;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+}
+
+.instructions li::before, .certification-rules li::before, .certification-content li::before {
+    content: counter(list-counter) '.';
+    counter-increment: list-counter;
+    color: #ff4757;
+    position: absolute;
+    left: 0;
+}
 
 .contacts-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
 }
 
+/* Продолжение стилей из предыдущего ответа */
+
 .contact-card a {
-    color: #1a2a6c;
+    color: #98fb98;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .contact-card a:hover {
-    color: #ff4757;
+    color: #00ff7f;
+    transform: translateX(3px);
 }
 
 footer {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+    background: rgba(10, 30, 15, 0.95);
+    color: #888;
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    border-top: 2px solid #8b0000;
     margin-top: 3rem;
+}
+
+/* Военные элементы оформления */
+.military-border {
+    border: 2px dashed #8b0000;
+    padding: 0.5rem;
+    margin: 1rem 0;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-online {
+    background: #00ff7f;
+}
+
+.status-offline {
+    background: #ff4757;
 }
 
 /* Анимации */
 @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Плавные переходы для всех элементов */
-* {
-    transition: all 0.3s ease;
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
-/* Эффекты при наведении */
-.schedule-card:hover, .contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+/* Специальные военные эффекты */
+.warning {
+    color: #ff4757;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 71, 87, 0.3);
 }
 
-/* Адаптивность */
+.important {
+    background: rgba(139, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-left: 4px solid #ff4757;
+    margin: 1rem 0;
+}
+
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        padding: 1rem;
+        padding: 0.8rem;
+        text-align: center;
+    }
+    
+    .logo {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
     }
     
     nav ul {
-        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     nav li {
-        margin: 0 1rem;
+        margin: 0.5rem 1rem;
     }
     
     main {
         padding: 1rem;
     }
     
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
     .contacts-list {
         grid-template-columns: 1fr;
+    }
+    
+    .schedule-card, .contact-card {
+        padding: 1.2rem;
+    }
+}
+
+/* Печатный режим */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    header, footer, nav {
+        display: none;
+    }
+    
+    .status-indicator {
+        display: none;
     }
 }
