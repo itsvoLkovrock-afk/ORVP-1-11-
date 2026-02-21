@@ -2097,3 +2097,163 @@ h1, h2, h3, h4 {
         transition-duration: 0.01ms !important;
     }
 }
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ ССЫЛОК (добавить в конец файла style.css) */
+
+/* Переменные цветов — если их ещё нет в основном CSS */
+:root {
+    --mp-red: #b22222;
+    --mp-gold: #ffd700;
+    --mp-light-blue: #87ceeb;
+    --text-light: #f0f0f0;
+    --text-medium: #ccc;
+    --bg-dark: #0f1a20;
+}
+
+/* Стили для заголовка */
+.main .content h2 {
+    text-align: center;
+    color: var(--mp-gold);
+    margin-bottom: 30px;
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.main .content h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--mp-red), transparent, var(--mp-red));
+}
+
+/* Списки ссылок */
+.links-list {
+    list-style-position: inside;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Элементы списка */
+.links-list li {
+    margin-bottom: 12px;
+    padding: 16px 20px;
+    background: rgba(15, 26, 40, 0.8);
+    border-radius: 8px;
+    border-left: 4px solid var(--mp-light-blue);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.links-list li:hover {
+    background: rgba(25, 36, 50, 0.9);
+    transform: translateX(5px);
+    border-left-color: var(--mp-gold);
+}
+
+/* Ссылки в списке */
+.links-list a {
+    color: var(--mp-light-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.links-list a:hover {
+    color: var(--mp-gold);
+}
+
+.links-list a::before {
+    content: '🔗';
+    flex-shrink: 0;
+}
+
+/* Специальный стиль для пункта «Форум ВП» (2‑й пункт) с паролем */
+.links-list li:nth-child(2) {
+    border-left-color: var(--mp-red);
+    padding-top: 22px;
+}
+
+.links-list li:nth-child(2)::after {
+    content: 'Пароль: 7d99156550e7';
+    position: absolute;
+    top: 4px;
+    right: 15px;
+    background: rgba(178, 34, 34, 0.2);
+    color: var(--mp-gold);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .links-list {
+        max-width: 95%;
+    }
+    
+    .links-list li {
+        padding: 14px 18px;
+    }
+    
+    .main .content h2 {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .links-list li {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .links-list li:nth-child(2)::after {
+        top: 2px;
+        right: 10px;
+        font-size: 0.75rem;
+        padding: 3px 8px;
+    }
+}
+
+/* Поддержка тёмной темы */
+/* Поддержка тёмной темы (продолжение) */
+@media (prefers-color-scheme: dark) {
+    .links-list li {
+        background: rgba(20, 40, 60, 0.9);
+        border-color: rgba(80, 95, 105, 0.6);
+    }
+    
+    .links-list a {
+        color: #87ceeb;
+    }
+    
+    .links-list a:hover {
+        color: #ffd700;
+    }
+    
+    .links-list li:nth-child(2)::after {
+        background: rgba(178, 34, 34, 0.3);
+        border-color: rgba(255, 215, 0, 0.6);
+    }
+}
+
+/* Улучшение доступности */
+.links-list a:focus {
+    outline: 2px solid var(--mp-gold);
+    outline-offset: 2px;
+}
+
+/* Отключение анимаций для пользователей с предпочтениями */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
