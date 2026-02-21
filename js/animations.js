@@ -71,3 +71,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 2000);
 });
+// Добавляем класс loading-animation для плавного появления элементов
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    el.classList.add('loading-animation');
+});
+
+// Эффект «радара» для предупреждений
+document.querySelectorAll('.warning').forEach(warning => {
+    warning.classList.add('radar-effect');
+});
+
+// Анимация мигающих индикаторов статуса
+setInterval(() => {
+    const statusIndicators = document.querySelectorAll('.status-indicator');
+    statusIndicators.forEach(indicator => {
+        indicator.style.boxShadow = `0 0 10px ${indicator.dataset.color}`;
+        setTimeout(() => {
+            indicator.style.boxShadow = 'none';
+        }, 500);
+    });
+}, 2000);
+
+// Эффект следования за курсором для карточек
+document.querySelectorAll('.card-3d').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; // позиция X относительно карточки
+        const y = e.clientY - rect.top;  // позиция Y относительно карточки
+
+        // Вычисляем угол поворота
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 10; // макс. поворот 10 градусов
+        const rotateX = ((centerY - y) / centerY) * 10;
+
+        card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'rotateY(0) rotateX(0) scale(1)';
+    });
+});
+
+// Анимация появления элементов при скролле
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+fadeElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    fadeObserver.observe(el);
+});
+
+// Добавление звуковых эффектов (опционально)
+const audio = new Audio();
+audio.volume = 0.3;
+
+document.querySelectorAll('a, button').forEach(element => {
+    element.addEventListener('click', () => {
+        // Можно подключить короткий звуковой эффект
+        // audio.src = 'click-sound.mp3';
+        // audio.play().catch(e => console.log('Звук не воспроизведён:', e));
+    });
+});
